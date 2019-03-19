@@ -1,0 +1,10 @@
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/vivado/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 8dc97edb785347a5a4a2dd0be56c4e35 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L fifo_generator_v13_2_2 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot design_1_wrapper_behav xil_defaultlib.design_1_wrapper xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-718] formal port <fifo_reset> does not exist in entity <design_1>.  Please compare the definition of block <design_1> to its component declaration and its instantion to detect the mismatch. [C:/Users/butchertd/Documents/eaglesat/FIFO_TESTING/FIFO_TESTING.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:38]
+ERROR: [VRFC 10-718] formal port <rd_enable> does not exist in entity <design_1>.  Please compare the definition of block <design_1> to its component declaration and its instantion to detect the mismatch. [C:/Users/butchertd/Documents/eaglesat/FIFO_TESTING/FIFO_TESTING.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:39]
+ERROR: [VRFC 10-718] formal port <wr_enable> does not exist in entity <design_1>.  Please compare the definition of block <design_1> to its component declaration and its instantion to detect the mismatch. [C:/Users/butchertd/Documents/eaglesat/FIFO_TESTING/FIFO_TESTING.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:40]
+ERROR: [VRFC 10-718] formal port <rst> does not exist in entity <design_1>.  Please compare the definition of block <design_1> to its component declaration and its instantion to detect the mismatch. [C:/Users/butchertd/Documents/eaglesat/FIFO_TESTING/FIFO_TESTING.srcs/sources_1/bd/design_1/hdl/design_1_wrapper.vhd:45]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
