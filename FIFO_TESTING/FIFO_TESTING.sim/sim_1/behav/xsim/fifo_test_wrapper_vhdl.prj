@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../FIFO_TESTING.ip_user_files/bd/fifo_test/sim/fifo_test.vhd" \
-"../../../../FIFO_TESTING.srcs/sources_1/bd/fifo_test/hdl/fifo_test_wrapper.vhd" \
-
-# Do not sort compile order
-nosort

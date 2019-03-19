@@ -1,0 +1,9 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.sim/sim_1/synth/func/xsim/fpga_design_wrapper_func_synth.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity fpga_design_central_interface_0_0_central_interface
+INFO: [VRFC 10-307] analyzing entity fpga_design_uart_rx_0_0_uart_rx
+INFO: [VRFC 10-307] analyzing entity fpga_design_uart_tx_0_0_uart_tx
+INFO: [VRFC 10-307] analyzing entity fpga_design_central_interface_0_0
+INFO: [VRFC 10-307] analyzing entity fpga_design_uart_rx_0_0
+INFO: [VRFC 10-307] analyzing entity fpga_design_uart_tx_0_0
+INFO: [VRFC 10-307] analyzing entity fpga_design
+INFO: [VRFC 10-307] analyzing entity fpga_design_wrapper

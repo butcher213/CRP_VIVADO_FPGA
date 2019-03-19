@@ -1,0 +1,6 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../uart_testing.srcs/sources_1/new/image_thresholding.vhd" \
+
+# Do not sort compile order
+nosort

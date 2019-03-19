@@ -1,0 +1,9 @@
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/vivado/Vivado/2018.2/bin/unwrapped/win64.o/xelab.exe -wto 1869e0d9962e4354a3aa6c5ae64eebb9 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip -L xpm --snapshot fpga_design_wrapper_behav xil_defaultlib.fpga_design_wrapper -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+ERROR: [XSIM 43-3249] File C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/uart_rx.vhd, line 44. Unresolved signal "current_state" is multiply driven.

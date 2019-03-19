@@ -1,0 +1,1 @@
+-wto "1869e0d9962e4354a3aa6c5ae64eebb9" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "central_interface_func_impl" "xil_defaultlib.central_interface" -log "elaborate.log" 

@@ -1,0 +1,12 @@
+
+{ 
+    crc :  463511016720044680  , 
+    ccp_crc :  0  , 
+    cmdline : " -wto 1869e0d9962e4354a3aa6c5ae64eebb9 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L fifo_generator_v13_2_2 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot CRP_FPGA_wrapper_behav xil_defaultlib.CRP_FPGA_wrapper xil_defaultlib.glbl" , 
+    buildDate : "Jun 14 2018" , 
+    buildTime : "20:41:02" , 
+    linkCmd : "D:\\vivado\\Vivado\\2018.2\\data\\..\\tps\\mingw\\6.2.0\\win64.o\\nt\\bin\\gcc.exe -Wa,-W  -O -Wl,--stack,104857600 -o \"xsim.dir/CRP_FPGA_wrapper_behav/xsimk.exe\"   \"xsim.dir/CRP_FPGA_wrapper_behav/obj/xsim_0.win64.obj\" \"xsim.dir/CRP_FPGA_wrapper_behav/obj/xsim_1.win64.obj\" \"D:\\vivado\\Vivado\\2018.2\\lib\\win64.o\\\\librdi_simulator_kernel.dll\"  \"D:\\vivado\\Vivado\\2018.2\\lib\\win64.o\\\\librdi_simbridge_kernel.dll\"" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 

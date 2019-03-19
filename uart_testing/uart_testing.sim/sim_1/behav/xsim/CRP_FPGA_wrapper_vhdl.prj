@@ -1,0 +1,17 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../uart_testing.srcs/sources_1/new/central_interface.vhd" \
+"../../../../uart_testing.srcs/sources_1/new/uart_tx.vhd" \
+"../../../../uart_testing.srcs/sources_1/new/fifo_protector.vhd" \
+"../../../../uart_testing.srcs/sources_1/new/image_thresholding.vhd" \
+"../../../../uart_testing.srcs/sources_1/new/threshold_memory.vhd" \
+"../../../../uart_testing.ip_user_files/bd/CRP_FPGA/ip/CRP_FPGA_central_interface_0_0/sim/CRP_FPGA_central_interface_0_0.vhd" \
+"../../../../uart_testing.ip_user_files/bd/CRP_FPGA/ip/CRP_FPGA_uart_tx_0_0/sim/CRP_FPGA_uart_tx_0_0.vhd" \
+"../../../../uart_testing.ip_user_files/bd/CRP_FPGA/ip/CRP_FPGA_fifo_protector_0_0/sim/CRP_FPGA_fifo_protector_0_0.vhd" \
+"../../../../uart_testing.ip_user_files/bd/CRP_FPGA/ip/CRP_FPGA_image_thresholding_0_0/sim/CRP_FPGA_image_thresholding_0_0.vhd" \
+"../../../../uart_testing.ip_user_files/bd/CRP_FPGA/ip/CRP_FPGA_threshold_memory_0_0/sim/CRP_FPGA_threshold_memory_0_0.vhd" \
+"../../../../uart_testing.ip_user_files/bd/CRP_FPGA/sim/CRP_FPGA.vhd" \
+"../../../../uart_testing.srcs/sources_1/bd/CRP_FPGA/hdl/CRP_FPGA_wrapper.vhd" \
+
+# Do not sort compile order
+nosort

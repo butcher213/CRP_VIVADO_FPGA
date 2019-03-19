@@ -1,0 +1,13 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../uart_testing.srcs/sources_1/new/central_interface.vhd" \
+"../../../../uart_testing.srcs/sources_1/new/uart_tx.vhd" \
+"../../../../uart_testing.srcs/sources_1/new/uart_rx.vhd" \
+"../../../../uart_testing.ip_user_files/bd/fpga_design/ip/fpga_design_central_interface_0_0/sim/fpga_design_central_interface_0_0.vhd" \
+"../../../../uart_testing.ip_user_files/bd/fpga_design/ip/fpga_design_uart_tx_0_0/sim/fpga_design_uart_tx_0_0.vhd" \
+"../../../../uart_testing.ip_user_files/bd/fpga_design/ip/fpga_design_uart_rx_0_0/sim/fpga_design_uart_rx_0_0.vhd" \
+"../../../../uart_testing.ip_user_files/bd/fpga_design/sim/fpga_design.vhd" \
+"../../../../uart_testing.srcs/sources_1/bd/FPGA_Design/hdl/fpga_design_wrapper.vhd" \
+
+# Do not sort compile order
+nosort

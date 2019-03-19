@@ -1,0 +1,18 @@
+0.6
+2018.2
+Jun 14 2018
+20:41:02
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.ip_user_files/bd/fpga_design/ip/fpga_design_central_interface_0_0/sim/fpga_design_central_interface_0_0.vhd,1552154300,vhdl,,,,fpga_design_central_interface_0_0,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.ip_user_files/bd/fpga_design/ip/fpga_design_uart_rx_0_0/sim/fpga_design_uart_rx_0_0.vhd,1552154300,vhdl,,,,fpga_design_uart_rx_0_0,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.ip_user_files/bd/fpga_design/ip/fpga_design_uart_tx_0_0/sim/fpga_design_uart_tx_0_0.vhd,1552154300,vhdl,,,,fpga_design_uart_tx_0_0,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.ip_user_files/bd/fpga_design/sim/fpga_design.vhd,1552154300,vhdl,,,,fpga_design,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.sim/sim_1/behav/xsim/glbl.v,1529022455,verilog,,,,glbl,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/CRP_FPGA/hdl/CRP_FPGA_wrapper.vhd,1551398733,vhdl,,,,crp_fpga_wrapper,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/FPGA_Design/hdl/fpga_design_wrapper.vhd,1552154300,vhdl,,,,fpga_design_wrapper,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/FPGA_block_design/hdl/FPGA_block_design_wrapper.vhd,1551383330,vhdl,,,,fpga_block_design_wrapper,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/central_interface.vhd,1551374404,vhdl,,,,central_interface,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/fifo_protector.vhd,1551299460,vhdl,,,,fifo_protector,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/image_thresholding.vhd,1551393847,vhdl,,,,image_thresholding,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/threshold_memory.vhd,1551299104,vhdl,,,,threshold_memory,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/uart_rx.vhd,1552153756,vhdl,,,,uart_rx,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/uart_tx.vhd,1552137565,vhdl,,,,uart_tx,,,,,,,,

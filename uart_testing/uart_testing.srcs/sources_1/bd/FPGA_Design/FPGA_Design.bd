@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0x8A03297E0C567E64" bd:device="xc7a15tcpg236-1" bd:isValidated="true" bd:synthFlowMode="Hierarchical" bd:tool_version="2018.2" bd:top="fpga_design" bd:version="1.00.a">
+
+  <spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
+    <spirit:vendor>xilinx.com</spirit:vendor>
+    <spirit:library>BlockDiagram</spirit:library>
+    <spirit:name>fpga_design</spirit:name>
+    <spirit:version>1.00.a</spirit:version>
+    <spirit:parameters>
+      <spirit:parameter>
+        <spirit:name>isTop</spirit:name>
+        <spirit:value spirit:format="bool" spirit:resolve="immediate">true</spirit:value>
+      </spirit:parameter>
+    </spirit:parameters>
+    <spirit:model>
+      <spirit:views>
+        <spirit:view>
+          <spirit:name>BlockDiagram</spirit:name>
+          <spirit:envIdentifier>:vivado.xilinx.com:</spirit:envIdentifier>
+          <spirit:hierarchyRef spirit:library="BlockDiagram" spirit:name="fpga_design_imp" spirit:vendor="xilinx.com" spirit:version="1.00.a"/>
+        </spirit:view>
+      </spirit:views>
+      <spirit:ports>
+        <spirit:port>
+          <spirit:name>clk</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>rst</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>fifo_out</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+            <spirit:vector>
+              <spirit:left>39</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>fifo_empty</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>fifo_full</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>fifo_ready</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>uart_rx</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>threshold</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>11</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>Tx</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>read_en</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>Tx_enabled</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>tx_lock</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+      </spirit:ports>
+    </spirit:model>
+  </spirit:component>
+
+  <spirit:design xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
+    <spirit:vendor>xilinx.com</spirit:vendor>
+    <spirit:library>BlockDiagram</spirit:library>
+    <spirit:name>fpga_design_imp</spirit:name>
+    <spirit:version>1.00.a</spirit:version>
+    <spirit:componentInstances>
+      <spirit:componentInstance>
+        <spirit:instanceName>central_interface_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="central_interface" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">fpga_design_central_interface_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">central_interface</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>uart_tx_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="uart_tx" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">fpga_design_uart_tx_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">uart_tx</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>uart_rx_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="uart_rx" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">fpga_design_uart_rx_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">uart_rx</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+    </spirit:componentInstances>
+    <spirit:adHocConnections>
+      <spirit:adHocConnection>
+        <spirit:name>clk_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="clk"/>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="clk"/>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="UART_clk"/>
+        <spirit:internalPortReference spirit:componentRef="uart_rx_0" spirit:portRef="uart_clk"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>rst_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="rst"/>
+        <spirit:internalPortReference spirit:componentRef="uart_rx_0" spirit:portRef="rst"/>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="rst"/>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="rst"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>central_interface_0_read_enable</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="read_enable"/>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="read_enable"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>central_interface_0_Tx_en</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="Tx_en"/>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="Tx_en"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>central_interface_0_Tx_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="Tx_out"/>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="Tx_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>fifo_out_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="fifo_out"/>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="fifo_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>uart_rx_0_Rx_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="uart_rx_0" spirit:portRef="Rx_out"/>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="Rx_in"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>uart_rx_0_Rx_end</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="uart_rx_0" spirit:portRef="Rx_end"/>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="Rx_end"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>fifo_empty_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="fifo_empty"/>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="FIFO_empty"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>fifo_full_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="fifo_full"/>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="FIFO_full"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>fifo_ready_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="fifo_ready"/>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="FIFO_ready"/>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="fifo_ready"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>uart_rx_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="uart_rx"/>
+        <spirit:internalPortReference spirit:componentRef="uart_rx_0" spirit:portRef="Rx"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>central_interface_0_threshold_out</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="central_interface_0" spirit:portRef="threshold_out"/>
+        <spirit:externalPortReference spirit:portRef="threshold"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>uart_tx_0_Tx</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="Tx"/>
+        <spirit:externalPortReference spirit:portRef="Tx"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>uart_tx_0_rd_en</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="rd_en"/>
+        <spirit:externalPortReference spirit:portRef="read_en"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>uart_tx_0_Tx_enabled</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="Tx_enabled"/>
+        <spirit:externalPortReference spirit:portRef="Tx_enabled"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>uart_tx_0_tx_lock</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="uart_tx_0" spirit:portRef="tx_lock"/>
+        <spirit:externalPortReference spirit:portRef="tx_lock"/>
+      </spirit:adHocConnection>
+    </spirit:adHocConnections>
+  </spirit:design>
+
+</bd:repository>

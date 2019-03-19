@@ -1,0 +1,40 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.8.5  2018-01-30 bk=1.4354 VDI=40 GEI=35 GUI=JA:1.6 non-TLS
+#  -string -flagsOSRD
+preplace port read_en -pg 1 -y 60 -defaultsOSRD
+preplace port Tx_enabled -pg 1 -y 80 -defaultsOSRD
+preplace port Tx -pg 1 -y 120 -defaultsOSRD
+preplace port fifo_ready -pg 1 -y 180 -defaultsOSRD
+preplace port fifo_empty -pg 1 -y 210 -defaultsOSRD
+preplace port tx_lock -pg 1 -y 160 -defaultsOSRD
+preplace port rst -pg 1 -y -120 -defaultsOSRD
+preplace port clk -pg 1 -y -50 -defaultsOSRD
+preplace port fifo_full -pg 1 -y 140 -defaultsOSRD
+preplace port uart_rx -pg 1 -y -100 -defaultsOSRD
+preplace portBus fifo_out -pg 1 -y 0 -defaultsOSRD
+preplace portBus threshold -pg 1 -y 0 -defaultsOSRD
+preplace inst central_interface_0 -pg 1 -lvl 1 -y 120 -defaultsOSRD
+preplace inst uart_rx_0 -pg 1 -lvl 2 -y -100 -defaultsOSRD
+preplace inst uart_tx_0 -pg 1 -lvl 2 -y 80 -defaultsOSRD
+preplace netloc fifo_out_1 1 0 2 NJ 0 330
+preplace netloc central_interface_0_read_enable 1 1 1 320
+preplace netloc uart_tx_0_Tx_enabled 1 2 1 660
+preplace netloc central_interface_0_threshold_out 1 1 2 310J 200 640
+preplace netloc uart_tx_0_Tx 1 2 1 650
+preplace netloc fifo_full_1 1 0 1 -30
+preplace netloc uart_tx_0_tx_lock 1 2 1 630
+preplace netloc rst_1 1 0 2 10J -20 350
+preplace netloc uart_rx_0_Rx_out 1 0 3 0 250 NJ 250 620
+preplace netloc uart_tx_0_rd_en 1 2 1 630
+preplace netloc fifo_ready_1 1 0 2 -20 240 350
+preplace netloc fifo_empty_1 1 0 1 -10
+preplace netloc clk_1 1 0 2 -30 -10 340
+preplace netloc central_interface_0_Tx_en 1 1 1 310
+preplace netloc uart_rx_0_Rx_end 1 0 3 10 260 NJ 260 610
+preplace netloc uart_rx_1 1 0 2 NJ -100 330
+preplace netloc central_interface_0_Tx_out 1 1 1 330
+levelinfo -pg 1 -50 160 480 680 -top -180 -bot 460
+",
+}
+

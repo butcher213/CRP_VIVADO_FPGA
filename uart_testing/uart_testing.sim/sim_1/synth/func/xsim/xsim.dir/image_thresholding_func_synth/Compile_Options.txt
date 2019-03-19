@@ -1,0 +1,1 @@
+-wto "1869e0d9962e4354a3aa6c5ae64eebb9" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "image_thresholding_func_synth" "xil_defaultlib.image_thresholding" -log "elaborate.log" 

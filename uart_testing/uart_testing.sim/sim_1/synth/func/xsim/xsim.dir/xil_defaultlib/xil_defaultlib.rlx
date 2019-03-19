@@ -1,0 +1,12 @@
+0.6
+2018.2
+Jun 14 2018
+20:41:02
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.sim/sim_1/synth/func/xsim/central_interface_func_synth.vhd,1551399137,vhdl,,,,crp_fpga;crp_fpga_central_interface_0_0;crp_fpga_central_interface_0_0_central_interface;crp_fpga_fifo_generator_0_0;crp_fpga_fifo_generator_0_0_builtin_extdepth_v6;crp_fpga_fifo_generator_0_0_builtin_extdepth_v6_0;crp_fpga_fifo_generator_0_0_builtin_prim_v6;crp_fpga_fifo_generator_0_0_builtin_prim_v6_1;crp_fpga_fifo_generator_0_0_builtin_top_v6;crp_fpga_fifo_generator_0_0_fifo_generator_top;crp_fpga_fifo_generator_0_0_fifo_generator_v13_2_2;crp_fpga_fifo_generator_0_0_fifo_generator_v13_2_2_builtin;crp_fpga_fifo_generator_0_0_fifo_generator_v13_2_2_synth;crp_fpga_fifo_generator_0_0_reset_builtin;crp_fpga_fifo_protector_0_0;crp_fpga_fifo_protector_0_0_fifo_protector;crp_fpga_image_thresholding_0_0;crp_fpga_image_thresholding_0_0_image_thresholding;crp_fpga_threshold_memory_0_0;crp_fpga_threshold_memory_0_0_threshold_memory;crp_fpga_uart_tx_0_0;crp_fpga_uart_tx_0_0_uart_tx;crp_fpga_wrapper,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.sim/sim_1/synth/func/xsim/fpga_design_wrapper_func_synth.vhd,1552155631,vhdl,,,,fpga_design;fpga_design_central_interface_0_0;fpga_design_central_interface_0_0_central_interface;fpga_design_uart_rx_0_0;fpga_design_uart_rx_0_0_uart_rx;fpga_design_uart_tx_0_0;fpga_design_uart_tx_0_0_uart_tx;fpga_design_wrapper,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.sim/sim_1/synth/func/xsim/glbl.v,1529022455,verilog,,,,glbl,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.sim/sim_1/synth/func/xsim/image_thresholding_func_synth.vhd,1551213696,vhdl,,,,image_thresholding,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.sim/sim_1/synth/func/xsim/threshold_memory_func_synth.vhd,1551299171,vhdl,,,,threshold_memory,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/central_interface.vhd,1551374404,vhdl,,,,central_interface,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/uart_rx.vhd,1552153756,vhdl,,,,uart_rx,,,,,,,,
+C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/uart_tx.vhd,1552137565,vhdl,,,,uart_tx,,,,,,,,
