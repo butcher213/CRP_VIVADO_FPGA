@@ -1,14 +1,14 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
--- Date        : Sat Mar  9 11:08:07 2019
+-- Date        : Sun Apr 14 16:17:33 2019
 -- Host        : BEAST running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 --               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ fpga_design_central_interface_0_0_sim_netlist.vhdl
 -- Design      : fpga_design_central_interface_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
--- Device      : xc7a15tcpg236-1
+-- Device      : xc7a35tcpg236-1
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -17,16 +17,17 @@ use UNISIM.VCOMPONENTS.ALL;
 entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_central_interface is
   port (
     threshold_out : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    Tx_out : out STD_LOGIC_VECTOR ( 4 downto 0 );
+    Tx_out : out STD_LOGIC_VECTOR ( 5 downto 0 );
     Tx_en : out STD_LOGIC;
     read_enable : out STD_LOGIC;
+    works : out STD_LOGIC;
     clk : in STD_LOGIC;
     Rx_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    Rx_end : in STD_LOGIC;
-    rst : in STD_LOGIC;
     FIFO_empty : in STD_LOGIC;
+    FIFO_ready : in STD_LOGIC;
     FIFO_full : in STD_LOGIC;
-    FIFO_ready : in STD_LOGIC
+    Rx_end : in STD_LOGIC;
+    rst : in STD_LOGIC
   );
 end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_central_interface;
 
@@ -41,17 +42,23 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_central_inte
   signal \FSM_sequential_current_state[2]_i_3_n_0\ : STD_LOGIC;
   signal \FSM_sequential_current_state[2]_i_4_n_0\ : STD_LOGIC;
   signal \FSM_sequential_current_state[2]_i_5_n_0\ : STD_LOGIC;
+  signal \FSM_sequential_current_state[2]_i_6_n_0\ : STD_LOGIC;
+  signal \FSM_sequential_current_state[2]_i_7_n_0\ : STD_LOGIC;
   signal \^tx_en\ : STD_LOGIC;
   signal Tx_en_i_1_n_0 : STD_LOGIC;
   signal Tx_en_i_2_n_0 : STD_LOGIC;
   signal Tx_en_i_3_n_0 : STD_LOGIC;
+  signal \^tx_out\ : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal \Tx_out[0]_i_1_n_0\ : STD_LOGIC;
   signal \Tx_out[1]_i_1_n_0\ : STD_LOGIC;
   signal \Tx_out[1]_i_2_n_0\ : STD_LOGIC;
+  signal \Tx_out[1]_i_3_n_0\ : STD_LOGIC;
+  signal \Tx_out[1]_i_4_n_0\ : STD_LOGIC;
+  signal \Tx_out[1]_i_5_n_0\ : STD_LOGIC;
   signal \Tx_out[2]_i_1_n_0\ : STD_LOGIC;
   signal \Tx_out[3]_i_1_n_0\ : STD_LOGIC;
   signal \Tx_out[4]_i_1_n_0\ : STD_LOGIC;
-  signal \Tx_out[4]_i_2_n_0\ : STD_LOGIC;
+  signal \Tx_out[5]_i_1_n_0\ : STD_LOGIC;
   signal \current_state__0\ : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute RTL_KEEP : string;
   attribute RTL_KEEP of \current_state__0\ : signal is "yes";
@@ -71,6 +78,12 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_central_inte
   signal \threshold_reg_n_0_[7]\ : STD_LOGIC;
   signal \threshold_reg_n_0_[8]\ : STD_LOGIC;
   signal \threshold_reg_n_0_[9]\ : STD_LOGIC;
+  signal \^works\ : STD_LOGIC;
+  signal works_i_1_n_0 : STD_LOGIC;
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \FSM_sequential_current_state[0]_i_2\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \FSM_sequential_current_state[1]_i_2\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \FSM_sequential_current_state[2]_i_6\ : label is "soft_lutpair0";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_sequential_current_state_reg[0]\ : label is "threshold_rx_1:011,fifo_status:001,change_threshold:010,fifo_read:101,init:000,threshold_rx_2:100";
   attribute KEEP : string;
@@ -79,71 +92,65 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_central_inte
   attribute KEEP of \FSM_sequential_current_state_reg[1]\ : label is "yes";
   attribute FSM_ENCODED_STATES of \FSM_sequential_current_state_reg[2]\ : label is "threshold_rx_1:011,fifo_status:001,change_threshold:010,fifo_read:101,init:000,threshold_rx_2:100";
   attribute KEEP of \FSM_sequential_current_state_reg[2]\ : label is "yes";
+  attribute SOFT_HLUTNM of \Tx_out[1]_i_3\ : label is "soft_lutpair1";
 begin
   Tx_en <= \^tx_en\;
+  Tx_out(5 downto 0) <= \^tx_out\(5 downto 0);
   read_enable <= \^read_enable\;
-\FSM_sequential_current_state[0]_i_1\: unisim.vcomponents.LUT6
+  works <= \^works\;
+\FSM_sequential_current_state[0]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F888FFFFF8880000"
+      INIT => X"F8FFF800"
     )
         port map (
-      I0 => \FSM_sequential_current_state[1]_i_2_n_0\,
+      I0 => \Tx_out[1]_i_4_n_0\,
       I1 => \FSM_sequential_current_state[0]_i_2_n_0\,
-      I2 => \current_state__0\(1),
-      I3 => \Tx_out[1]_i_2_n_0\,
-      I4 => \FSM_sequential_current_state[2]_i_3_n_0\,
-      I5 => \current_state__0\(0),
+      I2 => \FSM_sequential_current_state[1]_i_3_n_0\,
+      I3 => \FSM_sequential_current_state[2]_i_3_n_0\,
+      I4 => \current_state__0\(0),
       O => \FSM_sequential_current_state[0]_i_1_n_0\
     );
-\FSM_sequential_current_state[0]_i_2\: unisim.vcomponents.LUT6
+\FSM_sequential_current_state[0]_i_2\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0000080000080800"
+      INIT => X"0026"
     )
         port map (
-      I0 => \Tx_out[1]_i_2_n_0\,
-      I1 => Rx_end,
-      I2 => Rx_in(4),
-      I3 => Rx_in(5),
-      I4 => Rx_in(6),
-      I5 => FIFO_empty,
+      I0 => Rx_in(5),
+      I1 => Rx_in(6),
+      I2 => FIFO_empty,
+      I3 => Rx_in(4),
       O => \FSM_sequential_current_state[0]_i_2_n_0\
     );
-\FSM_sequential_current_state[1]_i_1\: unisim.vcomponents.LUT6
+\FSM_sequential_current_state[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"F888FFFFF8880000"
+      INIT => X"F8FFF800"
     )
         port map (
-      I0 => \FSM_sequential_current_state[1]_i_2_n_0\,
-      I1 => \FSM_sequential_current_state[1]_i_3_n_0\,
-      I2 => \current_state__0\(1),
-      I3 => \Tx_out[1]_i_2_n_0\,
-      I4 => \FSM_sequential_current_state[2]_i_3_n_0\,
-      I5 => \current_state__0\(1),
+      I0 => \Tx_out[1]_i_4_n_0\,
+      I1 => \FSM_sequential_current_state[1]_i_2_n_0\,
+      I2 => \FSM_sequential_current_state[1]_i_3_n_0\,
+      I3 => \FSM_sequential_current_state[2]_i_3_n_0\,
+      I4 => \current_state__0\(1),
       O => \FSM_sequential_current_state[1]_i_1_n_0\
     );
-\FSM_sequential_current_state[1]_i_2\: unisim.vcomponents.LUT5
+\FSM_sequential_current_state[1]_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"00000001"
+      INIT => X"10"
     )
         port map (
-      I0 => Rx_in(0),
-      I1 => Rx_in(1),
-      I2 => Rx_in(2),
-      I3 => Rx_in(3),
-      I4 => Rx_in(7),
+      I0 => Rx_in(6),
+      I1 => Rx_in(5),
+      I2 => Rx_in(4),
       O => \FSM_sequential_current_state[1]_i_2_n_0\
     );
-\FSM_sequential_current_state[1]_i_3\: unisim.vcomponents.LUT6
+\FSM_sequential_current_state[1]_i_3\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"0000000000000020"
+      INIT => X"10"
     )
         port map (
-      I0 => Rx_end,
-      I1 => Rx_in(6),
-      I2 => Rx_in(4),
-      I3 => Rx_in(5),
-      I4 => \current_state__0\(2),
-      I5 => \current_state__0\(0),
+      I0 => \current_state__0\(2),
+      I1 => \current_state__0\(0),
+      I2 => \current_state__0\(1),
       O => \FSM_sequential_current_state[1]_i_3_n_0\
     );
 \FSM_sequential_current_state[2]_i_1\: unisim.vcomponents.LUT5
@@ -152,50 +159,58 @@ begin
     )
         port map (
       I0 => threshold(11),
-      I1 => Tx_en_i_2_n_0,
+      I1 => \Tx_out[1]_i_4_n_0\,
       I2 => \FSM_sequential_current_state[2]_i_2_n_0\,
       I3 => \FSM_sequential_current_state[2]_i_3_n_0\,
       I4 => \current_state__0\(2),
       O => \FSM_sequential_current_state[2]_i_1_n_0\
     );
-\FSM_sequential_current_state[2]_i_2\: unisim.vcomponents.LUT6
+\FSM_sequential_current_state[2]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0000000000000002"
+      INIT => X"00010000"
     )
         port map (
-      I0 => Rx_in(6),
-      I1 => Rx_in(5),
-      I2 => FIFO_empty,
-      I3 => Rx_in(4),
-      I4 => \current_state__0\(2),
-      I5 => \current_state__0\(0),
+      I0 => \current_state__0\(1),
+      I1 => FIFO_empty,
+      I2 => Rx_in(4),
+      I3 => Rx_in(5),
+      I4 => Rx_in(6),
       O => \FSM_sequential_current_state[2]_i_2_n_0\
     );
-\FSM_sequential_current_state[2]_i_3\: unisim.vcomponents.LUT5
+\FSM_sequential_current_state[2]_i_3\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"AAEAAAAA"
+      INIT => X"FFFFFFFFEEEEFEEE"
     )
         port map (
       I0 => \FSM_sequential_current_state[2]_i_4_n_0\,
       I1 => \FSM_sequential_current_state[2]_i_5_n_0\,
-      I2 => \FSM_sequential_current_state[1]_i_2_n_0\,
-      I3 => \current_state__0\(1),
-      I4 => Rx_end,
+      I2 => \FSM_sequential_current_state[2]_i_6_n_0\,
+      I3 => Tx_en_i_2_n_0,
+      I4 => \current_state__0\(1),
+      I5 => \FSM_sequential_current_state[2]_i_7_n_0\,
       O => \FSM_sequential_current_state[2]_i_3_n_0\
     );
-\FSM_sequential_current_state[2]_i_4\: unisim.vcomponents.LUT5
+\FSM_sequential_current_state[2]_i_4\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"33FF32E6"
+      INIT => X"228C"
     )
         port map (
-      I0 => \current_state__0\(0),
+      I0 => Rx_end,
       I1 => \current_state__0\(1),
-      I2 => Rx_end,
+      I2 => \current_state__0\(0),
       I3 => \current_state__0\(2),
-      I4 => rst,
       O => \FSM_sequential_current_state[2]_i_4_n_0\
     );
-\FSM_sequential_current_state[2]_i_5\: unisim.vcomponents.LUT4
+\FSM_sequential_current_state[2]_i_5\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => rst,
+      I1 => \current_state__0\(2),
+      O => \FSM_sequential_current_state[2]_i_5_n_0\
+    );
+\FSM_sequential_current_state[2]_i_6\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"051A"
     )
@@ -204,7 +219,17 @@ begin
       I1 => FIFO_empty,
       I2 => Rx_in(6),
       I3 => Rx_in(5),
-      O => \FSM_sequential_current_state[2]_i_5_n_0\
+      O => \FSM_sequential_current_state[2]_i_6_n_0\
+    );
+\FSM_sequential_current_state[2]_i_7\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"32"
+    )
+        port map (
+      I0 => \current_state__0\(0),
+      I1 => \current_state__0\(1),
+      I2 => rst,
+      O => \FSM_sequential_current_state[2]_i_7_n_0\
     );
 \FSM_sequential_current_state_reg[0]\: unisim.vcomponents.FDRE
     generic map(
@@ -252,26 +277,30 @@ Tx_en_i_1: unisim.vcomponents.LUT6
       I5 => \^tx_en\,
       O => Tx_en_i_1_n_0
     );
-Tx_en_i_2: unisim.vcomponents.LUT3
+Tx_en_i_2: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"20"
+      INIT => X"0000000000000010"
     )
         port map (
-      I0 => \FSM_sequential_current_state[1]_i_2_n_0\,
-      I1 => \current_state__0\(1),
+      I0 => Rx_in(2),
+      I1 => Rx_in(3),
       I2 => Rx_end,
+      I3 => Rx_in(7),
+      I4 => Rx_in(1),
+      I5 => Rx_in(0),
       O => Tx_en_i_2_n_0
     );
-Tx_en_i_3: unisim.vcomponents.LUT5
+Tx_en_i_3: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"00020000"
+      INIT => X"0000000200000000"
     )
         port map (
-      I0 => FIFO_empty,
-      I1 => Rx_in(4),
-      I2 => Rx_in(5),
-      I3 => \current_state__0\(2),
-      I4 => Rx_in(6),
+      I0 => Rx_in(6),
+      I1 => Rx_in(5),
+      I2 => \current_state__0\(2),
+      I3 => Rx_in(4),
+      I4 => \current_state__0\(1),
+      I5 => FIFO_empty,
       O => Tx_en_i_3_n_0
     );
 Tx_en_reg: unisim.vcomponents.FDRE
@@ -282,128 +311,172 @@ Tx_en_reg: unisim.vcomponents.FDRE
       Q => \^tx_en\,
       R => '0'
     );
-\Tx_out[0]_i_1\: unisim.vcomponents.LUT3
+\Tx_out[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"10"
-    )
-        port map (
-      I0 => \current_state__0\(2),
-      I1 => \current_state__0\(0),
-      I2 => \current_state__0\(1),
-      O => \Tx_out[0]_i_1_n_0\
-    );
-\Tx_out[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"0020000000000000"
-    )
-        port map (
-      I0 => \Tx_out[1]_i_2_n_0\,
-      I1 => Rx_in(4),
-      I2 => FIFO_empty,
-      I3 => Rx_in(5),
-      I4 => Rx_in(6),
-      I5 => Tx_en_i_2_n_0,
-      O => \Tx_out[1]_i_1_n_0\
-    );
-\Tx_out[1]_i_2\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"1"
+      INIT => X"D210"
     )
         port map (
       I0 => \current_state__0\(0),
       I1 => \current_state__0\(2),
+      I2 => \current_state__0\(1),
+      I3 => \^tx_out\(0),
+      O => \Tx_out[0]_i_1_n_0\
+    );
+\Tx_out[1]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"0800FFFF08000000"
+    )
+        port map (
+      I0 => \Tx_out[1]_i_2_n_0\,
+      I1 => \Tx_out[1]_i_3_n_0\,
+      I2 => Rx_in(4),
+      I3 => \Tx_out[1]_i_4_n_0\,
+      I4 => \Tx_out[1]_i_5_n_0\,
+      I5 => \^tx_out\(1),
+      O => \Tx_out[1]_i_1_n_0\
+    );
+\Tx_out[1]_i_2\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"2"
+    )
+        port map (
+      I0 => FIFO_empty,
+      I1 => \current_state__0\(1),
       O => \Tx_out[1]_i_2_n_0\
     );
-\Tx_out[2]_i_1\: unisim.vcomponents.LUT4
+\Tx_out[1]_i_3\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"0400"
+      INIT => X"2"
     )
         port map (
-      I0 => \current_state__0\(2),
-      I1 => \current_state__0\(0),
+      I0 => Rx_in(6),
+      I1 => Rx_in(5),
+      O => \Tx_out[1]_i_3_n_0\
+    );
+\Tx_out[1]_i_4\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"02"
+    )
+        port map (
+      I0 => Tx_en_i_2_n_0,
+      I1 => \current_state__0\(2),
+      I2 => \current_state__0\(0),
+      O => \Tx_out[1]_i_4_n_0\
+    );
+\Tx_out[1]_i_5\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"3D"
+    )
+        port map (
+      I0 => \current_state__0\(0),
+      I1 => \current_state__0\(2),
       I2 => \current_state__0\(1),
-      I3 => FIFO_full,
+      O => \Tx_out[1]_i_5_n_0\
+    );
+\Tx_out[2]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"C3C00200"
+    )
+        port map (
+      I0 => FIFO_full,
+      I1 => \current_state__0\(1),
+      I2 => \current_state__0\(2),
+      I3 => \current_state__0\(0),
+      I4 => \^tx_out\(2),
       O => \Tx_out[2]_i_1_n_0\
     );
-\Tx_out[3]_i_1\: unisim.vcomponents.LUT4
+\Tx_out[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0400"
+      INIT => X"C3C00200"
     )
         port map (
-      I0 => \current_state__0\(2),
-      I1 => \current_state__0\(0),
-      I2 => \current_state__0\(1),
-      I3 => FIFO_ready,
+      I0 => FIFO_ready,
+      I1 => \current_state__0\(1),
+      I2 => \current_state__0\(2),
+      I3 => \current_state__0\(0),
+      I4 => \^tx_out\(3),
       O => \Tx_out[3]_i_1_n_0\
     );
-\Tx_out[4]_i_1\: unisim.vcomponents.LUT2
+\Tx_out[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7"
+      INIT => X"C3C00100"
     )
         port map (
-      I0 => \current_state__0\(1),
-      I1 => \current_state__0\(2),
+      I0 => FIFO_ready,
+      I1 => \current_state__0\(1),
+      I2 => \current_state__0\(2),
+      I3 => \current_state__0\(0),
+      I4 => \^tx_out\(4),
       O => \Tx_out[4]_i_1_n_0\
     );
-\Tx_out[4]_i_2\: unisim.vcomponents.LUT4
+\Tx_out[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"0004"
+      INIT => X"C3C00200"
     )
         port map (
-      I0 => \current_state__0\(2),
-      I1 => \current_state__0\(0),
-      I2 => \current_state__0\(1),
-      I3 => FIFO_ready,
-      O => \Tx_out[4]_i_2_n_0\
+      I0 => FIFO_empty,
+      I1 => \current_state__0\(1),
+      I2 => \current_state__0\(2),
+      I3 => \current_state__0\(0),
+      I4 => \^tx_out\(5),
+      O => \Tx_out[5]_i_1_n_0\
     );
 \Tx_out_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Tx_out[4]_i_1_n_0\,
+      CE => '1',
       D => \Tx_out[0]_i_1_n_0\,
-      Q => Tx_out(0),
+      Q => \^tx_out\(0),
       R => '0'
     );
 \Tx_out_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Tx_out[4]_i_1_n_0\,
+      CE => '1',
       D => \Tx_out[1]_i_1_n_0\,
-      Q => Tx_out(1),
+      Q => \^tx_out\(1),
       R => '0'
     );
 \Tx_out_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Tx_out[4]_i_1_n_0\,
+      CE => '1',
       D => \Tx_out[2]_i_1_n_0\,
-      Q => Tx_out(2),
+      Q => \^tx_out\(2),
       R => '0'
     );
 \Tx_out_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Tx_out[4]_i_1_n_0\,
+      CE => '1',
       D => \Tx_out[3]_i_1_n_0\,
-      Q => Tx_out(3),
+      Q => \^tx_out\(3),
       R => '0'
     );
 \Tx_out_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \Tx_out[4]_i_1_n_0\,
-      D => \Tx_out[4]_i_2_n_0\,
-      Q => Tx_out(4),
+      CE => '1',
+      D => \Tx_out[4]_i_1_n_0\,
+      Q => \^tx_out\(4),
+      R => '0'
+    );
+\Tx_out_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => \Tx_out[5]_i_1_n_0\,
+      Q => \^tx_out\(5),
       R => '0'
     );
 read_enable_i_1: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"FE40"
+      INIT => X"FE08"
     )
         port map (
-      I0 => \current_state__0\(1),
+      I0 => \current_state__0\(2),
       I1 => \current_state__0\(0),
-      I2 => \current_state__0\(2),
+      I2 => \current_state__0\(1),
       I3 => \^read_enable\,
       O => read_enable_i_1_n_0
     );
@@ -420,21 +493,21 @@ read_enable_reg: unisim.vcomponents.FDRE
       INIT => X"0800"
     )
         port map (
-      I0 => \current_state__0\(1),
-      I1 => \current_state__0\(0),
+      I0 => Rx_end,
+      I1 => \current_state__0\(1),
       I2 => \current_state__0\(2),
-      I3 => Rx_end,
+      I3 => \current_state__0\(0),
       O => threshold(11)
     );
 \threshold_out[11]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"0400"
+      INIT => X"1000"
     )
         port map (
-      I0 => \current_state__0\(0),
-      I1 => \current_state__0\(2),
-      I2 => \current_state__0\(1),
-      I3 => Rx_end,
+      I0 => \current_state__0\(1),
+      I1 => \current_state__0\(0),
+      I2 => Rx_end,
+      I3 => \current_state__0\(2),
       O => \threshold_out[11]_i_1_n_0\
     );
 \threshold_out_reg[0]\: unisim.vcomponents.FDRE
@@ -665,6 +738,25 @@ read_enable_reg: unisim.vcomponents.FDRE
       Q => \threshold_reg_n_0_[9]\,
       R => '0'
     );
+works_i_1: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"FE02"
+    )
+        port map (
+      I0 => \current_state__0\(0),
+      I1 => \current_state__0\(1),
+      I2 => \current_state__0\(2),
+      I3 => \^works\,
+      O => works_i_1_n_0
+    );
+works_reg: unisim.vcomponents.FDRE
+     port map (
+      C => clk,
+      CE => '1',
+      D => works_i_1_n_0,
+      Q => \^works\,
+      R => '0'
+    );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -682,7 +774,8 @@ entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
     Tx_en : out STD_LOGIC;
     read_enable : out STD_LOGIC;
     threshold_out : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    Tx_out : out STD_LOGIC_VECTOR ( 7 downto 0 )
+    Tx_out : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    works : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is true;
@@ -698,7 +791,7 @@ end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix;
 
 architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
   signal \<const0>\ : STD_LOGIC;
-  signal \^tx_out\ : STD_LOGIC_VECTOR ( 4 downto 0 );
+  signal \^tx_out\ : STD_LOGIC_VECTOR ( 5 downto 0 );
   attribute x_interface_info : string;
   attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute x_interface_parameter : string;
@@ -708,8 +801,7 @@ architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
 begin
   Tx_out(7) <= \<const0>\;
   Tx_out(6) <= \<const0>\;
-  Tx_out(5) <= \<const0>\;
-  Tx_out(4 downto 0) <= \^tx_out\(4 downto 0);
+  Tx_out(5 downto 0) <= \^tx_out\(5 downto 0);
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
@@ -722,10 +814,11 @@ U0: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_central_interface
       Rx_end => Rx_end,
       Rx_in(7 downto 0) => Rx_in(7 downto 0),
       Tx_en => Tx_en,
-      Tx_out(4 downto 0) => \^tx_out\(4 downto 0),
+      Tx_out(5 downto 0) => \^tx_out\(5 downto 0),
       clk => clk,
       read_enable => read_enable,
       rst => rst,
-      threshold_out(11 downto 0) => threshold_out(11 downto 0)
+      threshold_out(11 downto 0) => threshold_out(11 downto 0),
+      works => works
     );
 end STRUCTURE;

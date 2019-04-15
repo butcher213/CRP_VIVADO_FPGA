@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
--- Date        : Sat Mar  9 11:08:08 2019
+-- Date        : Thu Mar 21 18:52:01 2019
 -- Host        : BEAST running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0_sim_netlist.vhdl
+--               C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0_sim_netlist.vhdl
 -- Design      : fpga_design_uart_tx_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -17,15 +17,13 @@ use UNISIM.VCOMPONENTS.ALL;
 entity fpga_design_uart_tx_0_0_uart_tx is
   port (
     Tx : out STD_LOGIC;
-    Tx_enabled : out STD_LOGIC;
-    tx_lock : out STD_LOGIC;
     rd_en : out STD_LOGIC;
-    Tx_en : in STD_LOGIC;
-    read_enable : in STD_LOGIC;
-    UART_clk : in STD_LOGIC;
-    fifo_in : in STD_LOGIC_VECTOR ( 39 downto 0 );
     rst : in STD_LOGIC;
-    Tx_in : in STD_LOGIC_VECTOR ( 7 downto 0 )
+    read_enable : in STD_LOGIC;
+    Tx_en : in STD_LOGIC;
+    UART_clk : in STD_LOGIC;
+    Tx_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    fifo_in : in STD_LOGIC_VECTOR ( 39 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of fpga_design_uart_tx_0_0_uart_tx : entity is "uart_tx";
@@ -37,8 +35,8 @@ architecture STRUCTURE of fpga_design_uart_tx_0_0_uart_tx is
   signal \FSM_sequential_Tx_line_index[2]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_sequential_Tx_line_index[2]_i_2_n_0\ : STD_LOGIC;
   signal \^tx\ : STD_LOGIC;
-  signal \^tx_enabled\ : STD_LOGIC;
-  signal Tx_enabled_i_1_n_0 : STD_LOGIC;
+  signal Tx_data_in : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \Tx_data_in[7]_i_1_n_0\ : STD_LOGIC;
   signal Tx_i_1_n_0 : STD_LOGIC;
   signal Tx_i_2_n_0 : STD_LOGIC;
   signal Tx_i_3_n_0 : STD_LOGIC;
@@ -82,6 +80,7 @@ architecture STRUCTURE of fpga_design_uart_tx_0_0_uart_tx is
   signal \current_state[0]_i_1_n_0\ : STD_LOGIC;
   signal \current_state[1]_i_1_n_0\ : STD_LOGIC;
   signal \current_state[1]_i_2_n_0\ : STD_LOGIC;
+  signal \current_state[1]_i_3_n_0\ : STD_LOGIC;
   signal \current_state[2]_i_1_n_0\ : STD_LOGIC;
   signal \current_state[2]_i_2_n_0\ : STD_LOGIC;
   signal \current_state_reg_n_0_[0]\ : STD_LOGIC;
@@ -92,8 +91,6 @@ architecture STRUCTURE of fpga_design_uart_tx_0_0_uart_tx is
   signal \fifo_data[39]_i_2_n_0\ : STD_LOGIC;
   signal \^rd_en\ : STD_LOGIC;
   signal rd_en_i_1_n_0 : STD_LOGIC;
-  signal transmit_lock_i_1_n_0 : STD_LOGIC;
-  signal \^tx_lock\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \FSM_sequential_Tx_line_index[2]_i_2\ : label is "soft_lutpair0";
   attribute FSM_ENCODED_STATES : string;
@@ -104,17 +101,15 @@ architecture STRUCTURE of fpga_design_uart_tx_0_0_uart_tx is
   attribute KEEP of \FSM_sequential_Tx_line_index_reg[1]\ : label is "yes";
   attribute FSM_ENCODED_STATES of \FSM_sequential_Tx_line_index_reg[2]\ : label is "iSTATE:110,iSTATE0:000,iSTATE1:001,iSTATE2:010,iSTATE3:011,iSTATE4:100,iSTATE5:101,";
   attribute KEEP of \FSM_sequential_Tx_line_index_reg[2]\ : label is "yes";
-  attribute SOFT_HLUTNM of Tx_enabled_i_1 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of Tx_i_2 : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \current_state[1]_i_3\ : label is "soft_lutpair1";
   attribute SOFT_HLUTNM of \current_state[2]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of transmit_lock_i_1 : label is "soft_lutpair1";
 begin
   Tx <= \^tx\;
-  Tx_enabled <= \^tx_enabled\;
   rd_en <= \^rd_en\;
-  tx_lock <= \^tx_lock\;
 \FSM_sequential_Tx_line_index[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFC44400000444"
+      INIT => X"C444FFFF04440000"
     )
         port map (
       I0 => \Tx_line_index__0\(0),
@@ -127,7 +122,7 @@ begin
     );
 \FSM_sequential_Tx_line_index[1]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFC48800000488"
+      INIT => X"C488FFFF04880000"
     )
         port map (
       I0 => \Tx_line_index__0\(0),
@@ -140,7 +135,7 @@ begin
     );
 \FSM_sequential_Tx_line_index[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"FFFFC8C0000008C0"
+      INIT => X"C8C0FFFF08C00000"
     )
         port map (
       I0 => \Tx_line_index__0\(0),
@@ -153,7 +148,7 @@ begin
     );
 \FSM_sequential_Tx_line_index[2]_i_2\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"E"
+      INIT => X"1"
     )
         port map (
       I0 => \current_state_reg_n_0_[1]\,
@@ -184,23 +179,80 @@ begin
       Q => \Tx_line_index__0\(2),
       R => '0'
     );
-Tx_enabled_i_1: unisim.vcomponents.LUT4
+\Tx_data_in[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"FC04"
+      INIT => X"00000100"
     )
         port map (
-      I0 => \current_state_reg_n_0_[0]\,
+      I0 => \current_state_reg_n_0_[2]\,
       I1 => \current_state_reg_n_0_[1]\,
-      I2 => \current_state_reg_n_0_[2]\,
-      I3 => \^tx_enabled\,
-      O => Tx_enabled_i_1_n_0
+      I2 => read_enable,
+      I3 => Tx_en,
+      I4 => \current_state_reg_n_0_[0]\,
+      O => \Tx_data_in[7]_i_1_n_0\
     );
-Tx_enabled_reg: unisim.vcomponents.FDRE
+\Tx_data_in_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => UART_clk,
-      CE => '1',
-      D => Tx_enabled_i_1_n_0,
-      Q => \^tx_enabled\,
+      CE => \Tx_data_in[7]_i_1_n_0\,
+      D => Tx_in(0),
+      Q => Tx_data_in(0),
+      R => '0'
+    );
+\Tx_data_in_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => UART_clk,
+      CE => \Tx_data_in[7]_i_1_n_0\,
+      D => Tx_in(1),
+      Q => Tx_data_in(1),
+      R => '0'
+    );
+\Tx_data_in_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => UART_clk,
+      CE => \Tx_data_in[7]_i_1_n_0\,
+      D => Tx_in(2),
+      Q => Tx_data_in(2),
+      R => '0'
+    );
+\Tx_data_in_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => UART_clk,
+      CE => \Tx_data_in[7]_i_1_n_0\,
+      D => Tx_in(3),
+      Q => Tx_data_in(3),
+      R => '0'
+    );
+\Tx_data_in_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => UART_clk,
+      CE => \Tx_data_in[7]_i_1_n_0\,
+      D => Tx_in(4),
+      Q => Tx_data_in(4),
+      R => '0'
+    );
+\Tx_data_in_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => UART_clk,
+      CE => \Tx_data_in[7]_i_1_n_0\,
+      D => Tx_in(5),
+      Q => Tx_data_in(5),
+      R => '0'
+    );
+\Tx_data_in_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => UART_clk,
+      CE => \Tx_data_in[7]_i_1_n_0\,
+      D => Tx_in(6),
+      Q => Tx_data_in(6),
+      R => '0'
+    );
+\Tx_data_in_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => UART_clk,
+      CE => \Tx_data_in[7]_i_1_n_0\,
+      D => Tx_in(7),
+      Q => Tx_data_in(7),
       R => '0'
     );
 Tx_i_1: unisim.vcomponents.LUT6
@@ -251,13 +303,13 @@ Tx_reg: unisim.vcomponents.FDRE
     );
 \Tx_shift_registers[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"5E50"
+      INIT => X"4E4A"
     )
         port map (
-      I0 => \current_state_reg_n_0_[1]\,
-      I1 => \current_state_reg_n_0_[2]\,
-      I2 => \current_state_reg_n_0_[0]\,
-      I3 => \Tx_shift_registers_reg_n_0_[1]\,
+      I0 => \current_state_reg_n_0_[0]\,
+      I1 => \Tx_shift_registers_reg_n_0_[1]\,
+      I2 => \current_state_reg_n_0_[1]\,
+      I3 => \current_state_reg_n_0_[2]\,
       O => \Tx_shift_registers[0]_i_1_n_0\
     );
 \Tx_shift_registers[1]_i_1\: unisim.vcomponents.LUT5
@@ -265,7 +317,7 @@ Tx_reg: unisim.vcomponents.FDRE
       INIT => X"FF8C8080"
     )
         port map (
-      I0 => Tx_in(0),
+      I0 => Tx_data_in(0),
       I1 => \current_state_reg_n_0_[1]\,
       I2 => \current_state_reg_n_0_[0]\,
       I3 => \current_state_reg_n_0_[2]\,
@@ -282,7 +334,7 @@ Tx_reg: unisim.vcomponents.FDRE
       I2 => \current_state_reg_n_0_[2]\,
       I3 => \current_state_reg_n_0_[0]\,
       I4 => \current_state_reg_n_0_[1]\,
-      I5 => Tx_in(1),
+      I5 => Tx_data_in(1),
       O => \Tx_shift_registers[2]_i_1_n_0\
     );
 \Tx_shift_registers[2]_i_2\: unisim.vcomponents.LUT5
@@ -320,7 +372,7 @@ Tx_reg: unisim.vcomponents.FDRE
       I2 => \current_state_reg_n_0_[2]\,
       I3 => \current_state_reg_n_0_[0]\,
       I4 => \current_state_reg_n_0_[1]\,
-      I5 => Tx_in(2),
+      I5 => Tx_data_in(2),
       O => \Tx_shift_registers[3]_i_1_n_0\
     );
 \Tx_shift_registers[3]_i_2\: unisim.vcomponents.LUT5
@@ -358,7 +410,7 @@ Tx_reg: unisim.vcomponents.FDRE
       I2 => \current_state_reg_n_0_[2]\,
       I3 => \current_state_reg_n_0_[0]\,
       I4 => \current_state_reg_n_0_[1]\,
-      I5 => Tx_in(3),
+      I5 => Tx_data_in(3),
       O => \Tx_shift_registers[4]_i_1_n_0\
     );
 \Tx_shift_registers[4]_i_2\: unisim.vcomponents.LUT5
@@ -396,7 +448,7 @@ Tx_reg: unisim.vcomponents.FDRE
       I2 => \current_state_reg_n_0_[2]\,
       I3 => \current_state_reg_n_0_[0]\,
       I4 => \current_state_reg_n_0_[1]\,
-      I5 => Tx_in(4),
+      I5 => Tx_data_in(4),
       O => \Tx_shift_registers[5]_i_1_n_0\
     );
 \Tx_shift_registers[5]_i_2\: unisim.vcomponents.LUT5
@@ -434,7 +486,7 @@ Tx_reg: unisim.vcomponents.FDRE
       I2 => \current_state_reg_n_0_[2]\,
       I3 => \current_state_reg_n_0_[0]\,
       I4 => \current_state_reg_n_0_[1]\,
-      I5 => Tx_in(5),
+      I5 => Tx_data_in(5),
       O => \Tx_shift_registers[6]_i_1_n_0\
     );
 \Tx_shift_registers[6]_i_2\: unisim.vcomponents.LUT5
@@ -472,7 +524,7 @@ Tx_reg: unisim.vcomponents.FDRE
       I2 => \current_state_reg_n_0_[2]\,
       I3 => \current_state_reg_n_0_[0]\,
       I4 => \current_state_reg_n_0_[1]\,
-      I5 => Tx_in(6),
+      I5 => Tx_data_in(6),
       O => \Tx_shift_registers[7]_i_1_n_0\
     );
 \Tx_shift_registers[7]_i_2\: unisim.vcomponents.LUT6
@@ -511,7 +563,7 @@ Tx_reg: unisim.vcomponents.FDRE
       I2 => \current_state_reg_n_0_[2]\,
       I3 => \current_state_reg_n_0_[0]\,
       I4 => \current_state_reg_n_0_[1]\,
-      I5 => Tx_in(7),
+      I5 => Tx_data_in(7),
       O => \Tx_shift_registers[8]_i_1_n_0\
     );
 \Tx_shift_registers[8]_i_2\: unisim.vcomponents.LUT6
@@ -635,42 +687,52 @@ Tx_reg: unisim.vcomponents.FDRE
     );
 \current_state[0]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000000000F000EE"
+      INIT => X"000000F0000000EE"
     )
         port map (
-      I0 => Tx_en,
-      I1 => read_enable,
-      I2 => Tx_i_2_n_0,
-      I3 => \current_state_reg_n_0_[2]\,
-      I4 => \current_state_reg_n_0_[1]\,
-      I5 => \current_state_reg_n_0_[0]\,
-      O => \current_state[0]_i_1_n_0\
-    );
-\current_state[1]_i_1\: unisim.vcomponents.LUT6
-    generic map(
-      INIT => X"4445FFFF44440000"
-    )
-        port map (
-      I0 => \current_state_reg_n_0_[2]\,
-      I1 => \current_state[1]_i_2_n_0\,
+      I0 => read_enable,
+      I1 => Tx_en,
       I2 => Tx_i_2_n_0,
       I3 => \current_state_reg_n_0_[0]\,
-      I4 => \current_state[2]_i_2_n_0\,
+      I4 => \current_state_reg_n_0_[2]\,
       I5 => \current_state_reg_n_0_[1]\,
+      O => \current_state[0]_i_1_n_0\
+    );
+\current_state[1]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"ABFFAB00"
+    )
+        port map (
+      I0 => \Tx_data_in[7]_i_1_n_0\,
+      I1 => \current_state[1]_i_2_n_0\,
+      I2 => \current_state_reg_n_0_[2]\,
+      I3 => \current_state[2]_i_2_n_0\,
+      I4 => \current_state_reg_n_0_[1]\,
       O => \current_state[1]_i_1_n_0\
     );
 \current_state[1]_i_2\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0000777700000F00"
+      INIT => X"FF2FF02FF02FF02F"
     )
         port map (
-      I0 => \Tx_line_index__0\(2),
-      I1 => \Tx_line_index__0\(1),
-      I2 => read_enable,
-      I3 => Tx_en,
-      I4 => \current_state_reg_n_0_[1]\,
-      I5 => \current_state_reg_n_0_[0]\,
+      I0 => \current_state[1]_i_3_n_0\,
+      I1 => Tx_i_3_n_0,
+      I2 => \current_state_reg_n_0_[1]\,
+      I3 => \current_state_reg_n_0_[0]\,
+      I4 => \Tx_line_index__0\(2),
+      I5 => \Tx_line_index__0\(1),
       O => \current_state[1]_i_2_n_0\
+    );
+\current_state[1]_i_3\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"0001"
+    )
+        port map (
+      I0 => \Tx_shift_registers_reg_n_0_[1]\,
+      I1 => \Tx_shift_registers_reg_n_0_[0]\,
+      I2 => \Tx_shift_registers_reg_n_0_[9]\,
+      I3 => \Tx_shift_registers_reg_n_0_[3]\,
+      O => \current_state[1]_i_3_n_0\
     );
 \current_state[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -689,12 +751,12 @@ Tx_reg: unisim.vcomponents.FDRE
       INIT => X"FFFFFFFFFFFFFFFE"
     )
         port map (
-      I0 => \current_state_reg_n_0_[2]\,
-      I1 => \current_state_reg_n_0_[1]\,
-      I2 => \current_state_reg_n_0_[0]\,
-      I3 => rst,
-      I4 => Tx_en,
-      I5 => read_enable,
+      I0 => \current_state_reg_n_0_[0]\,
+      I1 => rst,
+      I2 => read_enable,
+      I3 => Tx_en,
+      I4 => \current_state_reg_n_0_[2]\,
+      I5 => \current_state_reg_n_0_[1]\,
       O => \current_state[2]_i_2_n_0\
     );
 \current_state_reg[0]\: unisim.vcomponents.FDRE
@@ -1082,25 +1144,6 @@ rd_en_reg: unisim.vcomponents.FDRE
       Q => \^rd_en\,
       R => '0'
     );
-transmit_lock_i_1: unisim.vcomponents.LUT4
-    generic map(
-      INIT => X"FE0C"
-    )
-        port map (
-      I0 => \current_state_reg_n_0_[1]\,
-      I1 => \current_state_reg_n_0_[0]\,
-      I2 => \current_state_reg_n_0_[2]\,
-      I3 => \^tx_lock\,
-      O => transmit_lock_i_1_n_0
-    );
-transmit_lock_reg: unisim.vcomponents.FDRE
-     port map (
-      C => UART_clk,
-      CE => '1',
-      D => transmit_lock_i_1_n_0,
-      Q => \^tx_lock\,
-      R => '0'
-    );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -1114,11 +1157,8 @@ entity fpga_design_uart_tx_0_0 is
     fifo_in : in STD_LOGIC_VECTOR ( 39 downto 0 );
     Tx_in : in STD_LOGIC_VECTOR ( 7 downto 0 );
     Tx_en : in STD_LOGIC;
-    fifo_ready : in STD_LOGIC;
     Tx : out STD_LOGIC;
-    rd_en : out STD_LOGIC;
-    Tx_enabled : out STD_LOGIC;
-    tx_lock : out STD_LOGIC
+    rd_en : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of fpga_design_uart_tx_0_0 : entity is true;
@@ -1144,13 +1184,11 @@ U0: entity work.fpga_design_uart_tx_0_0_uart_tx
      port map (
       Tx => Tx,
       Tx_en => Tx_en,
-      Tx_enabled => Tx_enabled,
       Tx_in(7 downto 0) => Tx_in(7 downto 0),
       UART_clk => UART_clk,
       fifo_in(39 downto 0) => fifo_in(39 downto 0),
       rd_en => rd_en,
       read_enable => read_enable,
-      rst => rst,
-      tx_lock => tx_lock
+      rst => rst
     );
 end STRUCTURE;

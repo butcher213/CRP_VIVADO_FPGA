@@ -9,38 +9,71 @@
     ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 
 source fpga_design_central_interface_0_0.tcl -notrace
-Command: synth_design -top fpga_design_central_interface_0_0 -part xc7a15tcpg236-1 -mode out_of_context
+Command: synth_design -top fpga_design_central_interface_0_0 -part xc7a35tcpg236-1 -mode out_of_context
 Starting synth_design
-Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
-INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 9636 
+INFO: Helper process launched with PID 3248 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 442.406 ; gain = 100.848
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 445.090 ; gain = 103.477
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'fpga_design_central_interface_0_0' [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/synth/fpga_design_central_interface_0_0.vhd:72]
-INFO: [Synth 8-3491] module 'central_interface' declared at 'C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/central_interface.vhd:34' bound to instance 'U0' of component 'central_interface' [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/synth/fpga_design_central_interface_0_0.vhd:105]
-INFO: [Synth 8-638] synthesizing module 'central_interface' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/central_interface.vhd:48]
-INFO: [Synth 8-256] done synthesizing module 'central_interface' (1#1) [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/new/central_interface.vhd:48]
-INFO: [Synth 8-256] done synthesizing module 'fpga_design_central_interface_0_0' (2#1) [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/synth/fpga_design_central_interface_0_0.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_central_interface_0_0' [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/synth/fpga_design_central_interface_0_0.vhd:73]
+INFO: [Synth 8-3491] module 'central_interface' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/new/central_interface.vhd:34' bound to instance 'U0' of component 'central_interface' [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/synth/fpga_design_central_interface_0_0.vhd:107]
+INFO: [Synth 8-638] synthesizing module 'central_interface' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/new/central_interface.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'central_interface' (1#1) [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/new/central_interface.vhd:49]
+INFO: [Synth 8-256] done synthesizing module 'fpga_design_central_interface_0_0' (2#1) [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/synth/fpga_design_central_interface_0_0.vhd:73]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 497.301 ; gain = 155.742
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 499.504 ; gain = 157.891
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 497.301 ; gain = 155.742
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 499.504 ; gain = 157.891
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 499.504 ; gain = 157.891
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+WARNING: [Constraints 18-5210] No constraint will be written out.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.076 . Memory (MB): peak = 795.730 ; gain = 2.379
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 795.730 ; gain = 454.117
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
-Loading part: xc7a15tcpg236-1
+Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 497.301 ; gain = 155.742
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 795.730 ; gain = 454.117
 ---------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7a15tcpg236-1
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 795.730 ; gain = 454.117
+---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'central_interface'
 INFO: [Synth 8-5544] ROM "read_enable" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "works" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "Tx_en" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "Tx_out" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 ---------------------------------------------------------------------------------------------------
@@ -55,7 +88,7 @@ INFO: [Synth 8-5544] ROM "current_state" won't be mapped to Block RAM because ad
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'central_interface'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 497.301 ; gain = 155.742
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 795.730 ; gain = 454.117
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -63,7 +96,6 @@ Report RTL Partitions:
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -71,15 +103,14 @@ Detailed RTL Component Info :
 +---Registers : 
 	               12 Bit    Registers := 2     
 	                8 Bit    Registers := 1     
-	                1 Bit    Registers := 2     
+	                1 Bit    Registers := 3     
 +---Muxes : 
-	   6 Input     12 Bit        Muxes := 2     
-	   2 Input      8 Bit        Muxes := 1     
-	   6 Input      8 Bit        Muxes := 1     
+	   6 Input     12 Bit        Muxes := 3     
+	   6 Input      8 Bit        Muxes := 2     
 	   2 Input      5 Bit        Muxes := 1     
 	  12 Input      3 Bit        Muxes := 1     
 	   5 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 7     
 	   6 Input      1 Bit        Muxes := 7     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -93,15 +124,14 @@ Detailed RTL Component Info :
 +---Registers : 
 	               12 Bit    Registers := 2     
 	                8 Bit    Registers := 1     
-	                1 Bit    Registers := 2     
+	                1 Bit    Registers := 3     
 +---Muxes : 
-	   6 Input     12 Bit        Muxes := 2     
-	   2 Input      8 Bit        Muxes := 1     
-	   6 Input      8 Bit        Muxes := 1     
+	   6 Input     12 Bit        Muxes := 3     
+	   6 Input      8 Bit        Muxes := 2     
 	   2 Input      5 Bit        Muxes := 1     
 	  12 Input      3 Bit        Muxes := 1     
 	   5 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 7     
 	   6 Input      1 Bit        Muxes := 7     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
@@ -110,21 +140,20 @@ Finished RTL Hierarchical Component Statistics
 Start Part Resource Summary
 ---------------------------------------------------------------------------------
 Part Resources:
-DSPs: 45 (col length:60)
-BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-No constraint files found.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-3917] design fpga_design_central_interface_0_0 has port Tx_out[7] driven by constant 0
-INFO: [Synth 8-3917] design fpga_design_central_interface_0_0 has port Tx_out[6] driven by constant 0
-INFO: [Synth 8-3917] design fpga_design_central_interface_0_0 has port Tx_out[5] driven by constant 0
+INFO: [Synth 8-3886] merging instance 'U0/Tx_out_reg[6]' (FDE) to 'U0/Tx_out_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/Tx_out_reg[7] )
+INFO: [Synth 8-3332] Sequential element (U0/Tx_out_reg[7]) is unused and will be removed from module fpga_design_central_interface_0_0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 636.242 ; gain = 294.684
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 795.730 ; gain = 454.117
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -132,12 +161,17 @@ Report RTL Partitions:
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-No constraint files found.
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 815.340 ; gain = 473.727
+---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 636.242 ; gain = 294.684
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 815.340 ; gain = 473.727
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -149,7 +183,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 636.715 ; gain = 295.156
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 834.973 ; gain = 493.359
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -173,7 +207,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 834.973 ; gain = 493.359
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -186,7 +220,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 834.973 ; gain = 493.359
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -198,25 +232,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 834.973 ; gain = 493.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 834.973 ; gain = 493.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 834.973 ; gain = 493.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 834.973 ; gain = 493.359
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -232,27 +266,27 @@ Report Cell Usage:
 +------+-----+------+
 |      |Cell |Count |
 +------+-----+------+
-|1     |LUT2 |     2|
-|2     |LUT3 |     2|
-|3     |LUT4 |     7|
-|4     |LUT5 |     5|
-|5     |LUT6 |     7|
-|6     |FDRE |    34|
+|1     |LUT2 |     3|
+|2     |LUT3 |     5|
+|3     |LUT4 |     8|
+|4     |LUT5 |     8|
+|5     |LUT6 |     5|
+|6     |FDRE |    36|
 +------+-----+------+
 
 Report Instance Areas: 
 +------+---------+------------------+------+
 |      |Instance |Module            |Cells |
 +------+---------+------------------+------+
-|1     |top      |                  |    57|
-|2     |  U0     |central_interface |    57|
+|1     |top      |                  |    65|
+|2     |  U0     |central_interface |    65|
 +------+---------+------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 834.973 ; gain = 493.359
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
-Synthesis Optimization Complete : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 636.715 ; gain = 295.156
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:23 . Memory (MB): peak = 834.973 ; gain = 197.133
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 834.973 ; gain = 493.359
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -260,15 +294,13 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-22 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+24 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 737.973 ; gain = 409.191
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:35 . Memory (MB): peak = 837.484 ; gain = 508.605
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Timing 38-35] Done setting XDC timing constraints.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/fpga_design_central_interface_0_0_synth_1/fpga_design_central_interface_0_0.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:15 ; elapsed = 00:00:23 . Memory (MB): peak = 1233.199 ; gain = 495.227
+INFO: [Common 17-1381] The checkpoint 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/fpga_design_central_interface_0_0_synth_1/fpga_design_central_interface_0_0.dcp' has been generated.
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/fpga_design_central_interface_0_0_synth_1/fpga_design_central_interface_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/fpga_design_central_interface_0_0_synth_1/fpga_design_central_interface_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file fpga_design_central_interface_0_0_utilization_synth.rpt -pb fpga_design_central_interface_0_0_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.043 . Memory (MB): peak = 1233.711 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sat Mar  9 11:08:08 2019...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.035 . Memory (MB): peak = 837.484 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sun Apr 14 16:17:34 2019...

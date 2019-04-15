@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="fpga_design" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1552154785"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1552154785"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1552154785"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1552154785"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1555292837"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1555292837"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1555292837"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1555292837"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\fpga_design_central_interface_0_0\fpga_design_central_interface_0_0.xci" Type="IP">
         <Instance HierarchyPath="central_interface_0"/>
@@ -23,14 +23,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\fpga_design_uart_rx_0_0\fpga_design_uart_rx_0_0.xci" Type="IP">
-        <Instance HierarchyPath="uart_rx_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="synth\fpga_design.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -39,6 +31,62 @@
       <File Name="sim\fpga_design.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\fpga_design_fifo_protector_0_0\fpga_design_fifo_protector_0_0.xci" Type="IP">
+        <Instance HierarchyPath="fifo_protector_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\fpga_design_threshold_memory_0_0\fpga_design_threshold_memory_0_0.xci" Type="IP">
+        <Instance HierarchyPath="threshold_memory_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\fpga_design_image_thresholding_0_0\fpga_design_image_thresholding_0_0.xci" Type="IP">
+        <Instance HierarchyPath="image_thresholding_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\fpga_design_uart_rx_0_0\fpga_design_uart_rx_0_0.xci" Type="IP">
+        <Instance HierarchyPath="uart_rx_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\fpga_design_camera_simulator_0_0\fpga_design_camera_simulator_0_0.xci" Type="IP">
+        <Instance HierarchyPath="camera_simulator_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\fpga_design_UART_clk_gen_0_0\fpga_design_UART_clk_gen_0_0.xci" Type="IP">
+        <Instance HierarchyPath="UART_clk_gen_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\fpga_design_fifo_generator_1_0\fpga_design_fifo_generator_1_0.xci" Type="IP">
+        <Instance HierarchyPath="fifo_generator_1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="fpga_design_ooc.xdc" Type="XDC">

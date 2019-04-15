@@ -59,7 +59,8 @@ ENTITY fpga_design_uart_rx_0_0 IS
     uart_clk : IN STD_LOGIC;
     rst : IN STD_LOGIC;
     Rx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-    Rx_end : OUT STD_LOGIC
+    Rx_end : OUT STD_LOGIC;
+    transition : OUT STD_LOGIC
   );
 END fpga_design_uart_rx_0_0;
 
@@ -72,7 +73,8 @@ ARCHITECTURE fpga_design_uart_rx_0_0_arch OF fpga_design_uart_rx_0_0 IS
       uart_clk : IN STD_LOGIC;
       rst : IN STD_LOGIC;
       Rx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-      Rx_end : OUT STD_LOGIC
+      Rx_end : OUT STD_LOGIC;
+      transition : OUT STD_LOGIC
     );
   END COMPONENT uart_rx;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -80,7 +82,7 @@ ARCHITECTURE fpga_design_uart_rx_0_0_arch OF fpga_design_uart_rx_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF fpga_design_uart_rx_0_0_arch : ARCHITECTURE IS "fpga_design_uart_rx_0_0,uart_rx,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF fpga_design_uart_rx_0_0_arch: ARCHITECTURE IS "fpga_design_uart_rx_0_0,uart_rx,{x_ipProduct=Vivado 2018.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart_rx,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF fpga_design_uart_rx_0_0_arch: ARCHITECTURE IS "fpga_design_uart_rx_0_0,uart_rx,{x_ipProduct=Vivado 2018.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart_rx,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=VHDL}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF fpga_design_uart_rx_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -96,6 +98,7 @@ BEGIN
       uart_clk => uart_clk,
       rst => rst,
       Rx_out => Rx_out,
-      Rx_end => Rx_end
+      Rx_end => Rx_end,
+      transition => transition
     );
 END fpga_design_uart_rx_0_0_arch;

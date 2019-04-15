@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
--- Date        : Sat Mar  9 11:08:08 2019
+-- Date        : Thu Mar 21 18:52:00 2019
 -- Host        : BEAST running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0_sim_netlist.vhdl
+--               c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0_sim_netlist.vhdl
 -- Design      : fpga_design_uart_rx_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -32,7 +32,7 @@ architecture STRUCTURE of fpga_design_uart_rx_0_0_uart_rx is
   signal current_state : STD_LOGIC;
   signal current_state_i_1_n_0 : STD_LOGIC;
   signal \eqOp__0\ : STD_LOGIC;
-  signal p_0_in : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal p_1_in : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal plusOp : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \counter[0]_i_1\ : label is "soft_lutpair1";
@@ -52,7 +52,7 @@ begin
      port map (
       C => uart_clk,
       CE => \eqOp__0\,
-      D => p_0_in(0),
+      D => p_1_in(0),
       Q => Rx_out(0),
       R => counter
     );
@@ -60,7 +60,7 @@ begin
      port map (
       C => uart_clk,
       CE => \eqOp__0\,
-      D => p_0_in(1),
+      D => p_1_in(1),
       Q => Rx_out(1),
       R => counter
     );
@@ -68,7 +68,7 @@ begin
      port map (
       C => uart_clk,
       CE => \eqOp__0\,
-      D => p_0_in(2),
+      D => p_1_in(2),
       Q => Rx_out(2),
       R => counter
     );
@@ -76,7 +76,7 @@ begin
      port map (
       C => uart_clk,
       CE => \eqOp__0\,
-      D => p_0_in(3),
+      D => p_1_in(3),
       Q => Rx_out(3),
       R => counter
     );
@@ -84,7 +84,7 @@ begin
      port map (
       C => uart_clk,
       CE => \eqOp__0\,
-      D => p_0_in(4),
+      D => p_1_in(4),
       Q => Rx_out(4),
       R => counter
     );
@@ -92,7 +92,7 @@ begin
      port map (
       C => uart_clk,
       CE => \eqOp__0\,
-      D => p_0_in(5),
+      D => p_1_in(5),
       Q => Rx_out(5),
       R => counter
     );
@@ -100,7 +100,7 @@ begin
      port map (
       C => uart_clk,
       CE => \eqOp__0\,
-      D => p_0_in(6),
+      D => p_1_in(6),
       Q => Rx_out(6),
       R => counter
     );
@@ -108,7 +108,7 @@ begin
      port map (
       C => uart_clk,
       CE => \eqOp__0\,
-      D => p_0_in(7),
+      D => p_1_in(7),
       Q => Rx_out(7),
       R => counter
     );
@@ -125,63 +125,63 @@ begin
       C => uart_clk,
       CE => '1',
       D => \Rx_shift_registers_reg_n_0_[0]\,
-      Q => p_0_in(0),
+      Q => p_1_in(0),
       R => counter
     );
 \Rx_shift_registers_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => uart_clk,
       CE => '1',
-      D => p_0_in(0),
-      Q => p_0_in(1),
+      D => p_1_in(0),
+      Q => p_1_in(1),
       R => counter
     );
 \Rx_shift_registers_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => uart_clk,
       CE => '1',
-      D => p_0_in(1),
-      Q => p_0_in(2),
+      D => p_1_in(1),
+      Q => p_1_in(2),
       R => counter
     );
 \Rx_shift_registers_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => uart_clk,
       CE => '1',
-      D => p_0_in(2),
-      Q => p_0_in(3),
+      D => p_1_in(2),
+      Q => p_1_in(3),
       R => counter
     );
 \Rx_shift_registers_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => uart_clk,
       CE => '1',
-      D => p_0_in(3),
-      Q => p_0_in(4),
+      D => p_1_in(3),
+      Q => p_1_in(4),
       R => counter
     );
 \Rx_shift_registers_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => uart_clk,
       CE => '1',
-      D => p_0_in(4),
-      Q => p_0_in(5),
+      D => p_1_in(4),
+      Q => p_1_in(5),
       R => counter
     );
 \Rx_shift_registers_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => uart_clk,
       CE => '1',
-      D => p_0_in(5),
-      Q => p_0_in(6),
+      D => p_1_in(5),
+      Q => p_1_in(6),
       R => counter
     );
 \Rx_shift_registers_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => uart_clk,
       CE => '1',
-      D => p_0_in(6),
-      Q => p_0_in(7),
+      D => p_1_in(6),
+      Q => p_1_in(7),
       R => counter
     );
 \counter[0]_i_1\: unisim.vcomponents.LUT1

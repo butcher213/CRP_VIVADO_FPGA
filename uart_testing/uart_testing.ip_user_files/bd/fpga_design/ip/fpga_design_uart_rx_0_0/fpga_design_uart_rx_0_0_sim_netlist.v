@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-// Date        : Sat Mar  9 11:08:08 2019
+// Date        : Thu Mar 21 18:52:00 2019
 // Host        : BEAST running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0_sim_netlist.v
+//               c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0_sim_netlist.v
 // Design      : fpga_design_uart_rx_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -62,7 +62,7 @@ module fpga_design_uart_rx_0_0_uart_rx
   wire current_state;
   wire current_state_i_1_n_0;
   wire eqOp__0;
-  wire [7:0]p_0_in;
+  wire [7:0]p_1_in;
   wire [3:0]plusOp;
   wire rst;
   wire uart_clk;
@@ -75,49 +75,49 @@ module fpga_design_uart_rx_0_0_uart_rx
   FDRE \Rx_out_reg[0] 
        (.C(uart_clk),
         .CE(eqOp__0),
-        .D(p_0_in[0]),
+        .D(p_1_in[0]),
         .Q(Rx_out[0]),
         .R(counter));
   FDRE \Rx_out_reg[1] 
        (.C(uart_clk),
         .CE(eqOp__0),
-        .D(p_0_in[1]),
+        .D(p_1_in[1]),
         .Q(Rx_out[1]),
         .R(counter));
   FDRE \Rx_out_reg[2] 
        (.C(uart_clk),
         .CE(eqOp__0),
-        .D(p_0_in[2]),
+        .D(p_1_in[2]),
         .Q(Rx_out[2]),
         .R(counter));
   FDRE \Rx_out_reg[3] 
        (.C(uart_clk),
         .CE(eqOp__0),
-        .D(p_0_in[3]),
+        .D(p_1_in[3]),
         .Q(Rx_out[3]),
         .R(counter));
   FDRE \Rx_out_reg[4] 
        (.C(uart_clk),
         .CE(eqOp__0),
-        .D(p_0_in[4]),
+        .D(p_1_in[4]),
         .Q(Rx_out[4]),
         .R(counter));
   FDRE \Rx_out_reg[5] 
        (.C(uart_clk),
         .CE(eqOp__0),
-        .D(p_0_in[5]),
+        .D(p_1_in[5]),
         .Q(Rx_out[5]),
         .R(counter));
   FDRE \Rx_out_reg[6] 
        (.C(uart_clk),
         .CE(eqOp__0),
-        .D(p_0_in[6]),
+        .D(p_1_in[6]),
         .Q(Rx_out[6]),
         .R(counter));
   FDRE \Rx_out_reg[7] 
        (.C(uart_clk),
         .CE(eqOp__0),
-        .D(p_0_in[7]),
+        .D(p_1_in[7]),
         .Q(Rx_out[7]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[0] 
@@ -130,49 +130,49 @@ module fpga_design_uart_rx_0_0_uart_rx
        (.C(uart_clk),
         .CE(1'b1),
         .D(\Rx_shift_registers_reg_n_0_[0] ),
-        .Q(p_0_in[0]),
+        .Q(p_1_in[0]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[2] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[0]),
-        .Q(p_0_in[1]),
+        .D(p_1_in[0]),
+        .Q(p_1_in[1]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[3] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[1]),
-        .Q(p_0_in[2]),
+        .D(p_1_in[1]),
+        .Q(p_1_in[2]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[4] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[2]),
-        .Q(p_0_in[3]),
+        .D(p_1_in[2]),
+        .Q(p_1_in[3]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[5] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[3]),
-        .Q(p_0_in[4]),
+        .D(p_1_in[3]),
+        .Q(p_1_in[4]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[6] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[4]),
-        .Q(p_0_in[5]),
+        .D(p_1_in[4]),
+        .Q(p_1_in[5]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[7] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[5]),
-        .Q(p_0_in[6]),
+        .D(p_1_in[5]),
+        .Q(p_1_in[6]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[8] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[6]),
-        .Q(p_0_in[7]),
+        .D(p_1_in[6]),
+        .Q(p_1_in[7]),
         .R(counter));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT1 #(

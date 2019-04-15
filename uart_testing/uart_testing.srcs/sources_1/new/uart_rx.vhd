@@ -36,7 +36,8 @@ entity uart_rx is
          uart_clk : IN STD_LOGIC;
          rst : IN STD_LOGIC;
          Rx_out : OUT STD_LOGIC_VECTOR(7 downto 0);
-         Rx_end : OUT STD_LOGIC);
+         Rx_end : OUT STD_LOGIC;
+         transition : OUT STD_LOGIC);
 end uart_rx;
 
 architecture Behavioral of uart_rx is
@@ -46,7 +47,7 @@ signal Rx_shift_registers : STD_LOGIC_VECTOR(9 downto 0);
 signal Rx_lock : STD_LOGIC;
 signal counter : STD_LOGIC_VECTOR(3 downto 0);
 begin
-current_state <= READ when (falling_edge(Rx) and current_state = INIT);
+--current_state <= READ when (falling_edge(Rx) and current_state = INIT);
 process(uart_clk, rst)
 begin
     if(rst = '1') then
@@ -60,20 +61,25 @@ begin
                 Rx_out <= (others => '0');
                 counter <= (others => '0');
                 Rx_lock <= '0';
+                transition <= '0';
+                if(Rx = '0') then
+                    current_state <= READ;
+                end if;
             when READ =>
+            transition <= '1';
                 counter <= counter + 1;
-                Rx_shift_registers(0) <= Rx;
-                Rx_shift_registers(1) <= Rx_shift_registers(0);
-                Rx_shift_registers(2) <= Rx_shift_registers(1);
-                Rx_shift_registers(3) <= Rx_shift_registers(2);
-                Rx_shift_registers(4) <= Rx_shift_registers(3);
-                Rx_shift_registers(5) <= Rx_shift_registers(4);
-                Rx_shift_registers(6) <= Rx_shift_registers(5);
-                Rx_shift_registers(7) <= Rx_shift_registers(6);
-                Rx_shift_registers(8) <= Rx_shift_registers(7);
-                Rx_shift_registers(9) <= Rx_shift_registers(8);
+                Rx_shift_registers(9) <= Rx;
+                Rx_shift_registers(8) <= Rx_shift_registers(9);
+                Rx_shift_registers(7) <= Rx_shift_registers(8);
+                Rx_shift_registers(6) <= Rx_shift_registers(7);
+                Rx_shift_registers(5) <= Rx_shift_registers(6);
+                Rx_shift_registers(4) <= Rx_shift_registers(5);
+                Rx_shift_registers(3) <= Rx_shift_registers(4);
+                Rx_shift_registers(2) <= Rx_shift_registers(3);
+                Rx_shift_registers(1) <= Rx_shift_registers(2);
+                Rx_shift_registers(0) <= Rx_shift_registers(1);
                 
-                if(counter = "1010") then
+                if(counter = "1001") then
                     current_state <= INIT;
                     Rx_out(7  downto 0) <= Rx_shift_registers(8 downto 1);
                     Rx_end <= '1';

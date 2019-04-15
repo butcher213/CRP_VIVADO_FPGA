@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/fpga_design_uart_tx_0_0_synth_1'
+HD_PWD='C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/fpga_design_uart_tx_0_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

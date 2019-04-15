@@ -65,7 +65,8 @@ ENTITY fpga_design_central_interface_0_0 IS
     Tx_en : OUT STD_LOGIC;
     read_enable : OUT STD_LOGIC;
     threshold_out : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
-    Tx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    Tx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    works : OUT STD_LOGIC
   );
 END fpga_design_central_interface_0_0;
 
@@ -84,7 +85,8 @@ ARCHITECTURE fpga_design_central_interface_0_0_arch OF fpga_design_central_inter
       Tx_en : OUT STD_LOGIC;
       read_enable : OUT STD_LOGIC;
       threshold_out : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
-      Tx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+      Tx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      works : OUT STD_LOGIC
     );
   END COMPONENT central_interface;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -108,6 +110,7 @@ BEGIN
       Tx_en => Tx_en,
       read_enable => read_enable,
       threshold_out => threshold_out,
-      Tx_out => Tx_out
+      Tx_out => Tx_out,
+      works => works
     );
 END fpga_design_central_interface_0_0_arch;

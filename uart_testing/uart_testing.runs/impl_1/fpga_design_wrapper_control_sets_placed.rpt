@@ -1,0 +1,88 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+| Date         : Sun Apr 14 18:50:21 2019
+| Host         : BEAST running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file fpga_design_wrapper_control_sets_placed.rpt
+| Design       : fpga_design_wrapper
+| Device       : xc7a35t
+------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    18 |
+| Unused register locations in slices containing registers |    48 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            1 |
+|      4 |            1 |
+|      8 |            1 |
+|     10 |            1 |
+|     12 |            1 |
+|     14 |            1 |
+|    16+ |           12 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              90 |           19 |
+| No           | No                    | Yes                    |             138 |           16 |
+| No           | Yes                   | No                     |              66 |            7 |
+| Yes          | No                    | No                     |             106 |           12 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             120 |           12 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------------------------------------------------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+----------------+
+|                           Clock Signal                           |                             Enable Signal                             |                                          Set/Reset Signal                                         | Slice Load Count | Bel Load Count |
++------------------------------------------------------------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+----------------+
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         |                                                                       | fpga_design_i/fifo_generator_1/U0/inst_fifo_gen/gconvfifo.rf/gbi.bi/g7ser_birst.rstbt/rd_rst_reg2 |                1 |              2 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         |                                                                       | fpga_design_i/fifo_protector_0/U0/fifo_rst                                                        |                1 |              4 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         | fpga_design_i/uart_tx_0/U0/tx_counter[3]_i_1_n_0                      |                                                                                                   |                1 |              8 |
+|  pixClk_IBUF_BUFG                                                |                                                                       |                                                                                                   |                3 |             10 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         | fpga_design_i/uart_tx_0/U0/Tx_data_in[7]_i_1_n_0                      |                                                                                                   |                2 |             12 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         | fpga_design_i/central_interface_0/U0/threshold[11]                    |                                                                                                   |                1 |             14 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         | fpga_design_i/uart_rx_0/U0/eqOp                                       | fpga_design_i/uart_rx_0/U0/counter                                                                |                1 |             16 |
+|  pixClk_IBUF_BUFG                                                |                                                                       | fpga_design_i/UART_clk_gen_0/U0/clear                                                             |                2 |             16 |
+|  pixClk_IBUF_BUFG                                                | fpga_design_i/fifo_protector_0/U0/FSM_onehot_current_state[8]_i_1_n_0 |                                                                                                   |                2 |             18 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         | fpga_design_i/uart_tx_0/U0/Tx_shift_registers[9]_i_1_n_0              |                                                                                                   |                3 |             20 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         | fpga_design_i/threshold_memory_0/U0/internal_memory[11]_i_2_n_0       | fpga_design_i/threshold_memory_0/U0/internal_memory[11]_i_1_n_0                                   |                2 |             24 |
+|  fpga_design_i/image_thresholding_0/U0/threshold_reg[11]_i_1_n_0 |                                                                       |                                                                                                   |                3 |             24 |
+| ~pixClk_IBUF_BUFG                                                |                                                                       | fpga_design_i/camera_simulator_0/U0/clear                                                         |                3 |             24 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         |                                                                       | fpga_design_i/uart_rx_0/U0/counter                                                                |                2 |             26 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         | fpga_design_i/central_interface_0/U0/threshold_out[11]_i_1_n_0        |                                                                                                   |                3 |             34 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         |                                                                       |                                                                                                   |               14 |             58 |
+|  fpga_design_i/UART_clk_gen_0/U0/baudclk                         | fpga_design_i/uart_tx_0/U0/fifo_data[39]_i_2_n_0                      | fpga_design_i/uart_tx_0/U0/fifo_data[39]_i_1_n_0                                                  |                9 |             80 |
+|  pixClk_IBUF_BUFG                                                |                                                                       | rst_IBUF                                                                                          |               14 |            132 |
++------------------------------------------------------------------+-----------------------------------------------------------------------+---------------------------------------------------------------------------------------------------+------------------+----------------+
+
+

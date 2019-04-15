@@ -61,11 +61,8 @@ ENTITY fpga_design_uart_tx_0_0 IS
     fifo_in : IN STD_LOGIC_VECTOR(39 DOWNTO 0);
     Tx_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     Tx_en : IN STD_LOGIC;
-    fifo_ready : IN STD_LOGIC;
     Tx : OUT STD_LOGIC;
-    rd_en : OUT STD_LOGIC;
-    Tx_enabled : OUT STD_LOGIC;
-    tx_lock : OUT STD_LOGIC
+    rd_en : OUT STD_LOGIC
   );
 END fpga_design_uart_tx_0_0;
 
@@ -80,11 +77,8 @@ ARCHITECTURE fpga_design_uart_tx_0_0_arch OF fpga_design_uart_tx_0_0 IS
       fifo_in : IN STD_LOGIC_VECTOR(39 DOWNTO 0);
       Tx_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       Tx_en : IN STD_LOGIC;
-      fifo_ready : IN STD_LOGIC;
       Tx : OUT STD_LOGIC;
-      rd_en : OUT STD_LOGIC;
-      Tx_enabled : OUT STD_LOGIC;
-      tx_lock : OUT STD_LOGIC
+      rd_en : OUT STD_LOGIC
     );
   END COMPONENT uart_tx;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -92,7 +86,7 @@ ARCHITECTURE fpga_design_uart_tx_0_0_arch OF fpga_design_uart_tx_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF fpga_design_uart_tx_0_0_arch : ARCHITECTURE IS "fpga_design_uart_tx_0_0,uart_tx,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF fpga_design_uart_tx_0_0_arch: ARCHITECTURE IS "fpga_design_uart_tx_0_0,uart_tx,{x_ipProduct=Vivado 2018.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart_tx,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF fpga_design_uart_tx_0_0_arch: ARCHITECTURE IS "fpga_design_uart_tx_0_0,uart_tx,{x_ipProduct=Vivado 2018.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart_tx,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=VHDL}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF fpga_design_uart_tx_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -110,10 +104,7 @@ BEGIN
       fifo_in => fifo_in,
       Tx_in => Tx_in,
       Tx_en => Tx_en,
-      fifo_ready => fifo_ready,
       Tx => Tx,
-      rd_en => rd_en,
-      Tx_enabled => Tx_enabled,
-      tx_lock => tx_lock
+      rd_en => rd_en
     );
 END fpga_design_uart_tx_0_0_arch;

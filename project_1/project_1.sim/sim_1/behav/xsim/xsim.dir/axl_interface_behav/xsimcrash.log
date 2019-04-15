@@ -1,0 +1,20 @@
+Exception at PC 0x00007FFD73DA5B58
+Attemped to read address 0x0000000000000024
+Printing stacktrace...
+
+[0] (iki_vcd_dumpvars+0xede8) [0x00007FFD73DA5B58]
+[1] (iki_vcd_dumpvars+0xede8) [0x00007FFD73DA5B58]
+[2] (iki_vcd_dumpvars+0xb95d) [0x00007FFD73DA26CD]
+[3] (iki_vcd_dumpvars+0xc66c) [0x00007FFD73DA33DC]
+[4] (iki_vcd_dumpvars+0xbe49) [0x00007FFD73DA2BB9]
+[5] (iki_vcd_dumpvars+0xb38c) [0x00007FFD73DA20FC]
+[6]  [0x00007FFD73C82418]
+[7]  [0x00007FFD73C89018]
+[8]  [0x00007FFD73C8C964]
+[9] (iki_simulate_design+0x36) [0x00007FFD73CC1B46]
+[10]  [0x00000000004047D9]
+[11]  [0x00000000004013E8]
+[12]  [0x000000000040151B]
+[13] (BaseThreadInitThunk+0x14) [0x00007FFE09E181F4]
+[14] (RtlUserThreadStart+0x21) [0x00007FFE0CC0A251]
+Done

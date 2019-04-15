@@ -2,40 +2,52 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Sat Mar  9 11:08:11 2019
-# Process ID: 14120
-# Current directory: C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1
+# Start of session at: Sun Apr 14 18:48:14 2019
+# Process ID: 23568
+# Current directory: C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1
 # Command line: vivado.exe -log fpga_design_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fpga_design_wrapper.tcl
-# Log file: C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/fpga_design_wrapper.vds
-# Journal file: C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1\vivado.jou
+# Log file: C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/fpga_design_wrapper.vds
+# Journal file: C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source fpga_design_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/vivado/Vivado/2018.2/data/ip'.
-add_files: Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 329.660 ; gain = 30.336
-Command: synth_design -top fpga_design_wrapper -part xc7a15tcpg236-1
+add_files: Time (s): cpu = 00:00:03 ; elapsed = 00:00:20 . Memory (MB): peak = 338.105 ; gain = 38.691
+Command: synth_design -top fpga_design_wrapper -part xc7a35tcpg236-1
 Starting synth_design
-Attempting to get a license for feature 'Synthesis' and/or device 'xc7a15t'
-INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a15t'
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 11064 
+INFO: Helper process launched with PID 12688 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 443.449 ; gain = 100.875
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 451.082 ; gain = 101.504
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'fpga_design_wrapper' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/hdl/fpga_design_wrapper.vhd:31]
-INFO: [Synth 8-3491] module 'fpga_design' declared at 'C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:14' bound to instance 'fpga_design_i' of component 'fpga_design' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/hdl/fpga_design_wrapper.vhd:49]
-INFO: [Synth 8-638] synthesizing module 'fpga_design' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:35]
-INFO: [Synth 8-3491] module 'fpga_design_central_interface_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-14120-BEAST/realtime/fpga_design_central_interface_0_0_stub.vhdl:5' bound to instance 'central_interface_0' of component 'fpga_design_central_interface_0_0' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:105]
-INFO: [Synth 8-638] synthesizing module 'fpga_design_central_interface_0_0' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-14120-BEAST/realtime/fpga_design_central_interface_0_0_stub.vhdl:22]
-INFO: [Synth 8-3491] module 'fpga_design_uart_rx_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-14120-BEAST/realtime/fpga_design_uart_rx_0_0_stub.vhdl:5' bound to instance 'uart_rx_0' of component 'fpga_design_uart_rx_0_0' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:119]
-INFO: [Synth 8-638] synthesizing module 'fpga_design_uart_rx_0_0' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-14120-BEAST/realtime/fpga_design_uart_rx_0_0_stub.vhdl:16]
-INFO: [Synth 8-3491] module 'fpga_design_uart_tx_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-14120-BEAST/realtime/fpga_design_uart_tx_0_0_stub.vhdl:5' bound to instance 'uart_tx_0' of component 'fpga_design_uart_tx_0_0' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:127]
-INFO: [Synth 8-638] synthesizing module 'fpga_design_uart_tx_0_0' [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-14120-BEAST/realtime/fpga_design_uart_tx_0_0_stub.vhdl:22]
-INFO: [Synth 8-256] done synthesizing module 'fpga_design' (1#1) [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:35]
-INFO: [Synth 8-256] done synthesizing module 'fpga_design_wrapper' (2#1) [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/hdl/fpga_design_wrapper.vhd:31]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_wrapper' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/hdl/fpga_design_wrapper.vhd:29]
+INFO: [Synth 8-3491] module 'fpga_design' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:14' bound to instance 'fpga_design_i' of component 'fpga_design' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/hdl/fpga_design_wrapper.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'fpga_design' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:33]
+INFO: [Synth 8-3491] module 'fpga_design_UART_clk_gen_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_UART_clk_gen_0_0_stub.vhdl:5' bound to instance 'UART_clk_gen_0' of component 'fpga_design_UART_clk_gen_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:175]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_UART_clk_gen_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_UART_clk_gen_0_0_stub.vhdl:13]
+INFO: [Synth 8-3491] module 'fpga_design_camera_simulator_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_camera_simulator_0_0_stub.vhdl:5' bound to instance 'camera_simulator_0' of component 'fpga_design_camera_simulator_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:180]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_camera_simulator_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_camera_simulator_0_0_stub.vhdl:16]
+INFO: [Synth 8-3491] module 'fpga_design_central_interface_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_central_interface_0_0_stub.vhdl:5' bound to instance 'central_interface_0' of component 'fpga_design_central_interface_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:188]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_central_interface_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_central_interface_0_0_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'fpga_design_fifo_generator_1_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_fifo_generator_1_0_stub.vhdl:5' bound to instance 'fifo_generator_1' of component 'fpga_design_fifo_generator_1_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:203]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_fifo_generator_1_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_fifo_generator_1_0_stub.vhdl:20]
+INFO: [Synth 8-3491] module 'fpga_design_fifo_protector_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_fifo_protector_0_0_stub.vhdl:5' bound to instance 'fifo_protector_0' of component 'fpga_design_fifo_protector_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:215]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_fifo_protector_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_fifo_protector_0_0_stub.vhdl:19]
+INFO: [Synth 8-3491] module 'fpga_design_image_thresholding_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_image_thresholding_0_0_stub.vhdl:5' bound to instance 'image_thresholding_0' of component 'fpga_design_image_thresholding_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:226]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_image_thresholding_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_image_thresholding_0_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'fpga_design_threshold_memory_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_threshold_memory_0_0_stub.vhdl:5' bound to instance 'threshold_memory_0' of component 'fpga_design_threshold_memory_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:239]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_threshold_memory_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_threshold_memory_0_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'fpga_design_uart_rx_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_uart_rx_0_0_stub.vhdl:5' bound to instance 'uart_rx_0' of component 'fpga_design_uart_rx_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:246]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_uart_rx_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_uart_rx_0_0_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'fpga_design_uart_tx_0_0' declared at 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_uart_tx_0_0_stub.vhdl:5' bound to instance 'uart_tx_0' of component 'fpga_design_uart_tx_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:255]
+INFO: [Synth 8-638] synthesizing module 'fpga_design_uart_tx_0_0' [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/.Xil/Vivado-23568-BEAST/realtime/fpga_design_uart_tx_0_0_stub.vhdl:19]
+INFO: [Synth 8-256] done synthesizing module 'fpga_design' (1#1) [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/synth/fpga_design.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'fpga_design_wrapper' (2#1) [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/hdl/fpga_design_wrapper.vhd:29]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 498.355 ; gain = 155.781
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 506.563 ; gain = 156.984
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -48,39 +60,72 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 498.355 ; gain = 155.781
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 506.563 ; gain = 156.984
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 498.355 ; gain = 155.781
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 506.563 ; gain = 156.984
 ---------------------------------------------------------------------------------
-INFO: [Device 21-403] Loading part xc7a15tcpg236-1
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0_in_context.xdc] for cell 'fpga_design_i/central_interface_0'
-Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0_in_context.xdc] for cell 'fpga_design_i/central_interface_0'
-Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0_in_context.xdc] for cell 'fpga_design_i/uart_tx_0'
-Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0_in_context.xdc] for cell 'fpga_design_i/uart_tx_0'
-Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0_in_context.xdc] for cell 'fpga_design_i/uart_rx_0'
-Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0_in_context.xdc] for cell 'fpga_design_i/uart_rx_0'
-Parsing XDC File [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/dont_touch.xdc]
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0_in_context.xdc] for cell 'fpga_design_i/central_interface_0'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0_in_context.xdc] for cell 'fpga_design_i/central_interface_0'
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0_in_context.xdc] for cell 'fpga_design_i/uart_tx_0'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0_in_context.xdc] for cell 'fpga_design_i/uart_tx_0'
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_fifo_protector_0_0/fpga_design_fifo_protector_0_0/fpga_design_fifo_protector_0_0_in_context.xdc] for cell 'fpga_design_i/fifo_protector_0'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_fifo_protector_0_0/fpga_design_fifo_protector_0_0/fpga_design_fifo_protector_0_0_in_context.xdc] for cell 'fpga_design_i/fifo_protector_0'
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_threshold_memory_0_0/fpga_design_threshold_memory_0_0/fpga_design_threshold_memory_0_0_in_context.xdc] for cell 'fpga_design_i/threshold_memory_0'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_threshold_memory_0_0/fpga_design_threshold_memory_0_0/fpga_design_threshold_memory_0_0_in_context.xdc] for cell 'fpga_design_i/threshold_memory_0'
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_image_thresholding_0_0/fpga_design_image_thresholding_0_0/fpga_design_image_thresholding_0_0_in_context.xdc] for cell 'fpga_design_i/image_thresholding_0'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_image_thresholding_0_0/fpga_design_image_thresholding_0_0/fpga_design_image_thresholding_0_0_in_context.xdc] for cell 'fpga_design_i/image_thresholding_0'
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0_in_context.xdc] for cell 'fpga_design_i/uart_rx_0'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0/fpga_design_uart_rx_0_0_in_context.xdc] for cell 'fpga_design_i/uart_rx_0'
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_camera_simulator_0_0/fpga_design_camera_simulator_0_0/fpga_design_camera_simulator_0_0_in_context.xdc] for cell 'fpga_design_i/camera_simulator_0'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_camera_simulator_0_0/fpga_design_camera_simulator_0_0/fpga_design_camera_simulator_0_0_in_context.xdc] for cell 'fpga_design_i/camera_simulator_0'
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_UART_clk_gen_0_0/fpga_design_UART_clk_gen_0_0/fpga_design_UART_clk_gen_0_0_in_context.xdc] for cell 'fpga_design_i/UART_clk_gen_0'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_UART_clk_gen_0_0/fpga_design_UART_clk_gen_0_0/fpga_design_UART_clk_gen_0_0_in_context.xdc] for cell 'fpga_design_i/UART_clk_gen_0'
+Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_fifo_generator_1_0/fpga_design_fifo_generator_1_0/fpga_design_fifo_generator_1_0_in_context.xdc] for cell 'fpga_design_i/fifo_generator_1'
+Finished Parsing XDC File [c:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_fifo_generator_1_0/fpga_design_fifo_generator_1_0/fpga_design_fifo_generator_1_0_in_context.xdc] for cell 'fpga_design_i/fifo_generator_1'
+Parsing XDC File [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc]
+WARNING: [Vivado 12-584] No ports matched 'clk'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:3]
+WARNING: [Vivado 12-584] No ports matched 'imgData[11]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:6]
+WARNING: [Vivado 12-584] No ports matched 'imgData[10]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:7]
+WARNING: [Vivado 12-584] No ports matched 'imgData[9]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:8]
+WARNING: [Vivado 12-584] No ports matched 'imgData[8]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:9]
+WARNING: [Vivado 12-584] No ports matched 'imgData[7]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:10]
+WARNING: [Vivado 12-584] No ports matched 'imgData[6]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:11]
+WARNING: [Vivado 12-584] No ports matched 'imgData[5]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:12]
+WARNING: [Vivado 12-584] No ports matched 'imgData[4]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:13]
+WARNING: [Vivado 12-584] No ports matched 'imgData[3]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:14]
+WARNING: [Vivado 12-584] No ports matched 'imgData[2]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:15]
+WARNING: [Vivado 12-584] No ports matched 'imgData[1]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:16]
+WARNING: [Vivado 12-584] No ports matched 'imgData[0]'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:17]
+WARNING: [Vivado 12-584] No ports matched 'Camera_clk'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:20]
+WARNING: [Vivado 12-584] No ports matched 'Camera_clk'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:31]
+WARNING: [Vivado 12-584] No ports matched 'clk'. [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc:34]
+Finished Parsing XDC File [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/fpga_design_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/constrs_1/new/ew.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/fpga_design_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/fpga_design_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.072 . Memory (MB): peak = 743.965 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 766.629 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 743.965 ; gain = 401.391
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 766.629 ; gain = 417.051
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
-Loading part: xc7a15tcpg236-1
+Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 743.965 ; gain = 401.391
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 766.629 ; gain = 417.051
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -88,12 +133,18 @@ Start Applying 'set_property' XDC Constraints
 Applied set_property DONT_TOUCH = true for fpga_design_i. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for fpga_design_i/central_interface_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for fpga_design_i/uart_tx_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for fpga_design_i/fifo_protector_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for fpga_design_i/threshold_memory_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for fpga_design_i/image_thresholding_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for fpga_design_i/uart_rx_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for fpga_design_i/camera_simulator_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for fpga_design_i/UART_clk_gen_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for fpga_design_i/fifo_generator_1. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 743.965 ; gain = 401.391
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 766.629 ; gain = 417.051
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 743.965 ; gain = 401.391
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 766.629 ; gain = 417.051
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -119,8 +170,8 @@ Finished RTL Hierarchical Component Statistics
 Start Part Resource Summary
 ---------------------------------------------------------------------------------
 Part Resources:
-DSPs: 45 (col length:60)
-BRAMs: 50 (col length: RAMB18 60 RAMB36 30)
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
@@ -129,7 +180,7 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 743.965 ; gain = 401.391
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 766.629 ; gain = 417.051
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -141,13 +192,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 797.629 ; gain = 455.055
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 801.590 ; gain = 452.012
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 797.629 ; gain = 455.055
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 801.590 ; gain = 452.012
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -159,7 +210,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 797.629 ; gain = 455.055
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 801.730 ; gain = 452.152
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -183,7 +234,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 799.016 ; gain = 456.441
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 802.762 ; gain = 453.184
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -196,7 +247,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 799.016 ; gain = 456.441
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 802.762 ; gain = 453.184
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -208,65 +259,77 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 799.016 ; gain = 456.441
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 802.762 ; gain = 453.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 799.016 ; gain = 456.441
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 802.762 ; gain = 453.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 799.016 ; gain = 456.441
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 802.762 ; gain = 453.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 799.016 ; gain = 456.441
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 802.762 ; gain = 453.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 Report BlackBoxes: 
-+------+----------------------------------+----------+
-|      |BlackBox name                     |Instances |
-+------+----------------------------------+----------+
-|1     |fpga_design_central_interface_0_0 |         1|
-|2     |fpga_design_uart_rx_0_0           |         1|
-|3     |fpga_design_uart_tx_0_0           |         1|
-+------+----------------------------------+----------+
++------+-----------------------------------+----------+
+|      |BlackBox name                      |Instances |
++------+-----------------------------------+----------+
+|1     |fpga_design_UART_clk_gen_0_0       |         1|
+|2     |fpga_design_camera_simulator_0_0   |         1|
+|3     |fpga_design_central_interface_0_0  |         1|
+|4     |fpga_design_fifo_generator_1_0     |         1|
+|5     |fpga_design_fifo_protector_0_0     |         1|
+|6     |fpga_design_image_thresholding_0_0 |         1|
+|7     |fpga_design_threshold_memory_0_0   |         1|
+|8     |fpga_design_uart_rx_0_0            |         1|
+|9     |fpga_design_uart_tx_0_0            |         1|
++------+-----------------------------------+----------+
 
 Report Cell Usage: 
-+------+-----------------------------------------+------+
-|      |Cell                                     |Count |
-+------+-----------------------------------------+------+
-|1     |fpga_design_central_interface_0_0_bbox_0 |     1|
-|2     |fpga_design_uart_rx_0_0_bbox_1           |     1|
-|3     |fpga_design_uart_tx_0_0_bbox_2           |     1|
-|4     |IBUF                                     |    46|
-|5     |OBUF                                     |    16|
-+------+-----------------------------------------+------+
++------+------------------------------------------+------+
+|      |Cell                                      |Count |
++------+------------------------------------------+------+
+|1     |fpga_design_UART_clk_gen_0_0_bbox_0       |     1|
+|2     |fpga_design_camera_simulator_0_0_bbox_1   |     1|
+|3     |fpga_design_central_interface_0_0_bbox_2  |     1|
+|4     |fpga_design_fifo_generator_1_0_bbox_3     |     1|
+|5     |fpga_design_fifo_protector_0_0_bbox_4     |     1|
+|6     |fpga_design_image_thresholding_0_0_bbox_5 |     1|
+|7     |fpga_design_threshold_memory_0_0_bbox_6   |     1|
+|8     |fpga_design_uart_rx_0_0_bbox_7            |     1|
+|9     |fpga_design_uart_tx_0_0_bbox_8            |     1|
+|10    |IBUF                                      |     7|
+|11    |OBUF                                      |    11|
++------+------------------------------------------+------+
 
 Report Instance Areas: 
 +------+----------------+------------+------+
 |      |Instance        |Module      |Cells |
 +------+----------------+------------+------+
-|1     |top             |            |    97|
-|2     |  fpga_design_i |fpga_design |    35|
+|1     |top             |            |   167|
+|2     |  fpga_design_i |fpga_design |   149|
 +------+----------------+------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 799.016 ; gain = 456.441
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 802.762 ; gain = 453.184
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 799.016 ; gain = 210.832
-Synthesis Optimization Complete : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 799.016 ; gain = 456.441
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:23 . Memory (MB): peak = 802.762 ; gain = 193.117
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 802.762 ; gain = 453.184
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 46 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 7 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -274,11 +337,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-25 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+38 Infos, 17 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 817.152 ; gain = 487.492
+synth_design: Time (s): cpu = 00:00:30 ; elapsed = 00:00:35 . Memory (MB): peak = 820.156 ; gain = 482.051
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.runs/synth_1/fpga_design_wrapper.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.runs/synth_1/fpga_design_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file fpga_design_wrapper_utilization_synth.rpt -pb fpga_design_wrapper_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 817.402 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sat Mar  9 11:08:59 2019...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 820.449 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sun Apr 14 18:49:16 2019...

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="fpga_design_uart_tx_0_0_synth_1" LaunchPart="xc7a15tcpg236-1" LaunchTime="1552154792">
+<GenRun Id="fpga_design_uart_tx_0_0_synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1555292841">
   <File Type="PA-TCL" Name="fpga_design_uart_tx_0_0.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="fpga_design_uart_tx_0_0_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="fpga_design_uart_tx_0_0_reports.tcl"/>
@@ -12,9 +12,11 @@
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/fpga_design_uart_tx_0_0">
     <File Path="$PSRCDIR/sources_1/bd/fpga_design/ip/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0.xci">
       <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="ProcessingOrder" Val="EARLY"/>
       </FileInfo>
     </File>
     <Config>
@@ -25,9 +27,11 @@
   <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/fpga_design_uart_tx_0_0">
     <File Path="$PSRCDIR/sources_1/bd/fpga_design/ip/fpga_design_uart_tx_0_0/fpga_design_uart_tx_0_0.xci">
       <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="ProcessingOrder" Val="EARLY"/>
       </FileInfo>
     </File>
     <Config>

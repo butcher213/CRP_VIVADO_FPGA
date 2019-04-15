@@ -1,14 +1,14 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-// Date        : Sat Mar  9 11:08:07 2019
+// Date        : Sun Apr 14 18:48:11 2019
 // Host        : BEAST running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 //               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ fpga_design_uart_tx_0_0_sim_netlist.v
 // Design      : fpga_design_uart_tx_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
-// Device      : xc7a15tcpg236-1
+// Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
@@ -22,84 +22,73 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix
     fifo_in,
     Tx_in,
     Tx_en,
-    fifo_ready,
     Tx,
-    rd_en,
-    Tx_enabled,
-    tx_lock);
+    rd_en);
   (* x_interface_info = "xilinx.com:signal:clock:1.0 UART_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME UART_clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, PHASE 0.000" *) input UART_clk;
   input read_enable;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW" *) input rst;
   input [39:0]fifo_in;
   input [7:0]Tx_in;
   input Tx_en;
-  input fifo_ready;
   output Tx;
   output rd_en;
-  output Tx_enabled;
-  output tx_lock;
 
   wire Tx;
   wire Tx_en;
-  wire Tx_enabled;
   wire [7:0]Tx_in;
   wire UART_clk;
   wire [39:0]fifo_in;
   wire rd_en;
   wire read_enable;
   wire rst;
-  wire tx_lock;
 
   decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx U0
        (.Tx(Tx),
         .Tx_en(Tx_en),
-        .Tx_enabled(Tx_enabled),
         .Tx_in(Tx_in),
         .UART_clk(UART_clk),
         .fifo_in(fifo_in),
         .rd_en(rd_en),
         .read_enable(read_enable),
-        .rst(rst),
-        .tx_lock(tx_lock));
+        .rst(rst));
 endmodule
 
 module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
    (Tx,
-    Tx_enabled,
-    tx_lock,
     rd_en,
-    Tx_en,
     read_enable,
+    Tx_en,
     UART_clk,
+    Tx_in,
     fifo_in,
-    rst,
-    Tx_in);
+    rst);
   output Tx;
-  output Tx_enabled;
-  output tx_lock;
   output rd_en;
-  input Tx_en;
   input read_enable;
+  input Tx_en;
   input UART_clk;
+  input [7:0]Tx_in;
   input [39:0]fifo_in;
   input rst;
-  input [7:0]Tx_in;
 
   wire \FSM_sequential_Tx_line_index[0]_i_1_n_0 ;
   wire \FSM_sequential_Tx_line_index[1]_i_1_n_0 ;
   wire \FSM_sequential_Tx_line_index[2]_i_1_n_0 ;
   wire \FSM_sequential_Tx_line_index[2]_i_2_n_0 ;
   wire Tx;
+  wire [7:0]Tx_data_in;
+  wire \Tx_data_in[7]_i_1_n_0 ;
   wire Tx_en;
-  wire Tx_enabled;
-  wire Tx_enabled_i_1_n_0;
   wire Tx_i_1_n_0;
   wire Tx_i_2_n_0;
   wire Tx_i_3_n_0;
+  wire Tx_i_4_n_0;
   wire [7:0]Tx_in;
   (* RTL_KEEP = "yes" *) wire [2:0]Tx_line_index__0;
   wire \Tx_shift_registers[0]_i_1_n_0 ;
   wire \Tx_shift_registers[1]_i_1_n_0 ;
+  wire \Tx_shift_registers[1]_i_2_n_0 ;
+  wire \Tx_shift_registers[1]_i_3_n_0 ;
   wire \Tx_shift_registers[2]_i_1_n_0 ;
   wire \Tx_shift_registers[2]_i_2_n_0 ;
   wire \Tx_shift_registers[2]_i_3_n_0 ;
@@ -122,6 +111,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
   wire \Tx_shift_registers[8]_i_2_n_0 ;
   wire \Tx_shift_registers[8]_i_3_n_0 ;
   wire \Tx_shift_registers[9]_i_1_n_0 ;
+  wire \Tx_shift_registers[9]_i_2_n_0 ;
   wire \Tx_shift_registers_reg_n_0_[0] ;
   wire \Tx_shift_registers_reg_n_0_[1] ;
   wire \Tx_shift_registers_reg_n_0_[2] ;
@@ -134,10 +124,12 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
   wire \Tx_shift_registers_reg_n_0_[9] ;
   wire UART_clk;
   wire \current_state[0]_i_1_n_0 ;
+  wire \current_state[0]_i_2_n_0 ;
   wire \current_state[1]_i_1_n_0 ;
   wire \current_state[1]_i_2_n_0 ;
   wire \current_state[2]_i_1_n_0 ;
   wire \current_state[2]_i_2_n_0 ;
+  wire \current_state[2]_i_3_n_0 ;
   wire \current_state_reg_n_0_[0] ;
   wire \current_state_reg_n_0_[1] ;
   wire \current_state_reg_n_0_[2] ;
@@ -149,47 +141,54 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
   wire rd_en_i_1_n_0;
   wire read_enable;
   wire rst;
-  wire transmit_lock_i_1_n_0;
-  wire tx_lock;
+  wire \tx_counter[0]_i_1_n_0 ;
+  wire \tx_counter[1]_i_1_n_0 ;
+  wire \tx_counter[2]_i_1_n_0 ;
+  wire \tx_counter[3]_i_1_n_0 ;
+  wire \tx_counter[3]_i_2_n_0 ;
+  wire \tx_counter_reg_n_0_[0] ;
+  wire \tx_counter_reg_n_0_[1] ;
+  wire \tx_counter_reg_n_0_[2] ;
+  wire \tx_counter_reg_n_0_[3] ;
 
   LUT6 #(
-    .INIT(64'hFFFFC44400000444)) 
+    .INIT(64'h88AAFFFF002A0000)) 
     \FSM_sequential_Tx_line_index[0]_i_1 
-       (.I0(Tx_line_index__0[0]),
-        .I1(\current_state_reg_n_0_[0] ),
-        .I2(Tx_line_index__0[2]),
-        .I3(Tx_line_index__0[1]),
+       (.I0(\current_state_reg_n_0_[0] ),
+        .I1(Tx_line_index__0[2]),
+        .I2(Tx_line_index__0[1]),
+        .I3(Tx_line_index__0[0]),
         .I4(\FSM_sequential_Tx_line_index[2]_i_2_n_0 ),
         .I5(Tx_line_index__0[0]),
         .O(\FSM_sequential_Tx_line_index[0]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFC48800000488)) 
+    .INIT(64'h8AA0FFFF02200000)) 
     \FSM_sequential_Tx_line_index[1]_i_1 
-       (.I0(Tx_line_index__0[0]),
-        .I1(\current_state_reg_n_0_[0] ),
-        .I2(Tx_line_index__0[2]),
-        .I3(Tx_line_index__0[1]),
+       (.I0(\current_state_reg_n_0_[0] ),
+        .I1(Tx_line_index__0[2]),
+        .I2(Tx_line_index__0[1]),
+        .I3(Tx_line_index__0[0]),
         .I4(\FSM_sequential_Tx_line_index[2]_i_2_n_0 ),
         .I5(Tx_line_index__0[1]),
         .O(\FSM_sequential_Tx_line_index[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFC8C0000008C0)) 
+    .INIT(64'hA888FFFF20080000)) 
     \FSM_sequential_Tx_line_index[2]_i_1 
-       (.I0(Tx_line_index__0[0]),
-        .I1(\current_state_reg_n_0_[0] ),
-        .I2(Tx_line_index__0[2]),
-        .I3(Tx_line_index__0[1]),
+       (.I0(\current_state_reg_n_0_[0] ),
+        .I1(Tx_line_index__0[2]),
+        .I2(Tx_line_index__0[1]),
+        .I3(Tx_line_index__0[0]),
         .I4(\FSM_sequential_Tx_line_index[2]_i_2_n_0 ),
         .I5(Tx_line_index__0[2]),
         .O(\FSM_sequential_Tx_line_index[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
-    .INIT(4'hE)) 
+    .INIT(4'h1)) 
     \FSM_sequential_Tx_line_index[2]_i_2 
        (.I0(\current_state_reg_n_0_[1] ),
         .I1(\current_state_reg_n_0_[2] ),
         .O(\FSM_sequential_Tx_line_index[2]_i_2_n_0 ));
-  (* FSM_ENCODED_STATES = "iSTATE:110,iSTATE0:000,iSTATE1:001,iSTATE2:010,iSTATE3:011,iSTATE4:100,iSTATE5:101," *) 
+  (* FSM_ENCODED_STATES = "iSTATE:101,iSTATE0:000,iSTATE1:001,iSTATE2:010,iSTATE3:011,iSTATE4:100," *) 
   (* KEEP = "yes" *) 
   FDRE \FSM_sequential_Tx_line_index_reg[0] 
        (.C(UART_clk),
@@ -197,7 +196,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
         .D(\FSM_sequential_Tx_line_index[0]_i_1_n_0 ),
         .Q(Tx_line_index__0[0]),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "iSTATE:110,iSTATE0:000,iSTATE1:001,iSTATE2:010,iSTATE3:011,iSTATE4:100,iSTATE5:101," *) 
+  (* FSM_ENCODED_STATES = "iSTATE:101,iSTATE0:000,iSTATE1:001,iSTATE2:010,iSTATE3:011,iSTATE4:100," *) 
   (* KEEP = "yes" *) 
   FDRE \FSM_sequential_Tx_line_index_reg[1] 
        (.C(UART_clk),
@@ -205,7 +204,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
         .D(\FSM_sequential_Tx_line_index[1]_i_1_n_0 ),
         .Q(Tx_line_index__0[1]),
         .R(1'b0));
-  (* FSM_ENCODED_STATES = "iSTATE:110,iSTATE0:000,iSTATE1:001,iSTATE2:010,iSTATE3:011,iSTATE4:100,iSTATE5:101," *) 
+  (* FSM_ENCODED_STATES = "iSTATE:101,iSTATE0:000,iSTATE1:001,iSTATE2:010,iSTATE3:011,iSTATE4:100," *) 
   (* KEEP = "yes" *) 
   FDRE \FSM_sequential_Tx_line_index_reg[2] 
        (.C(UART_clk),
@@ -213,50 +212,100 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
         .D(\FSM_sequential_Tx_line_index[2]_i_1_n_0 ),
         .Q(Tx_line_index__0[2]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'hFC04)) 
-    Tx_enabled_i_1
-       (.I0(\current_state_reg_n_0_[0] ),
-        .I1(\current_state_reg_n_0_[1] ),
-        .I2(\current_state_reg_n_0_[2] ),
-        .I3(Tx_enabled),
-        .O(Tx_enabled_i_1_n_0));
-  FDRE Tx_enabled_reg
+  LUT5 #(
+    .INIT(32'h00000004)) 
+    \Tx_data_in[7]_i_1 
+       (.I0(read_enable),
+        .I1(Tx_en),
+        .I2(\current_state_reg_n_0_[1] ),
+        .I3(\current_state_reg_n_0_[2] ),
+        .I4(\current_state_reg_n_0_[0] ),
+        .O(\Tx_data_in[7]_i_1_n_0 ));
+  FDRE \Tx_data_in_reg[0] 
        (.C(UART_clk),
-        .CE(1'b1),
-        .D(Tx_enabled_i_1_n_0),
-        .Q(Tx_enabled),
+        .CE(\Tx_data_in[7]_i_1_n_0 ),
+        .D(Tx_in[0]),
+        .Q(Tx_data_in[0]),
+        .R(1'b0));
+  FDRE \Tx_data_in_reg[1] 
+       (.C(UART_clk),
+        .CE(\Tx_data_in[7]_i_1_n_0 ),
+        .D(Tx_in[1]),
+        .Q(Tx_data_in[1]),
+        .R(1'b0));
+  FDRE \Tx_data_in_reg[2] 
+       (.C(UART_clk),
+        .CE(\Tx_data_in[7]_i_1_n_0 ),
+        .D(Tx_in[2]),
+        .Q(Tx_data_in[2]),
+        .R(1'b0));
+  FDRE \Tx_data_in_reg[3] 
+       (.C(UART_clk),
+        .CE(\Tx_data_in[7]_i_1_n_0 ),
+        .D(Tx_in[3]),
+        .Q(Tx_data_in[3]),
+        .R(1'b0));
+  FDRE \Tx_data_in_reg[4] 
+       (.C(UART_clk),
+        .CE(\Tx_data_in[7]_i_1_n_0 ),
+        .D(Tx_in[4]),
+        .Q(Tx_data_in[4]),
+        .R(1'b0));
+  FDRE \Tx_data_in_reg[5] 
+       (.C(UART_clk),
+        .CE(\Tx_data_in[7]_i_1_n_0 ),
+        .D(Tx_in[5]),
+        .Q(Tx_data_in[5]),
+        .R(1'b0));
+  FDRE \Tx_data_in_reg[6] 
+       (.C(UART_clk),
+        .CE(\Tx_data_in[7]_i_1_n_0 ),
+        .D(Tx_in[6]),
+        .Q(Tx_data_in[6]),
+        .R(1'b0));
+  FDRE \Tx_data_in_reg[7] 
+       (.C(UART_clk),
+        .CE(\Tx_data_in[7]_i_1_n_0 ),
+        .D(Tx_in[7]),
+        .Q(Tx_data_in[7]),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'hFFFFFAEF000F0A2F)) 
+    .INIT(64'hAABBFEFFAABB0233)) 
     Tx_i_1
        (.I0(\Tx_shift_registers_reg_n_0_[0] ),
-        .I1(Tx_i_2_n_0),
-        .I2(\current_state_reg_n_0_[2] ),
+        .I1(\current_state_reg_n_0_[2] ),
+        .I2(\current_state_reg_n_0_[0] ),
         .I3(\current_state_reg_n_0_[1] ),
-        .I4(\current_state_reg_n_0_[0] ),
+        .I4(Tx_i_2_n_0),
         .I5(Tx),
         .O(Tx_i_1_n_0));
-  LUT5 #(
-    .INIT(32'h00000001)) 
+  LUT6 #(
+    .INIT(64'hAAAAAAAAAAAAAAA8)) 
     Tx_i_2
-       (.I0(\Tx_shift_registers_reg_n_0_[3] ),
-        .I1(\Tx_shift_registers_reg_n_0_[9] ),
-        .I2(\Tx_shift_registers_reg_n_0_[0] ),
+       (.I0(Tx_i_3_n_0),
+        .I1(Tx_i_4_n_0),
+        .I2(\Tx_shift_registers_reg_n_0_[6] ),
         .I3(\Tx_shift_registers_reg_n_0_[1] ),
-        .I4(Tx_i_3_n_0),
+        .I4(\Tx_shift_registers_reg_n_0_[2] ),
+        .I5(\Tx_shift_registers_reg_n_0_[0] ),
         .O(Tx_i_2_n_0));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    Tx_i_3
+       (.I0(\current_state_reg_n_0_[1] ),
+        .I1(\current_state_reg_n_0_[0] ),
+        .O(Tx_i_3_n_0));
   LUT6 #(
     .INIT(64'hFFFFFFFFFFFFFFFE)) 
-    Tx_i_3
+    Tx_i_4
        (.I0(\Tx_shift_registers_reg_n_0_[7] ),
-        .I1(\Tx_shift_registers_reg_n_0_[2] ),
-        .I2(\Tx_shift_registers_reg_n_0_[6] ),
-        .I3(\Tx_shift_registers_reg_n_0_[8] ),
-        .I4(\Tx_shift_registers_reg_n_0_[4] ),
-        .I5(\Tx_shift_registers_reg_n_0_[5] ),
-        .O(Tx_i_3_n_0));
+        .I1(\Tx_shift_registers_reg_n_0_[3] ),
+        .I2(\Tx_shift_registers_reg_n_0_[4] ),
+        .I3(\Tx_shift_registers_reg_n_0_[9] ),
+        .I4(\Tx_shift_registers_reg_n_0_[5] ),
+        .I5(\Tx_shift_registers_reg_n_0_[8] ),
+        .O(Tx_i_4_n_0));
   FDRE Tx_reg
        (.C(UART_clk),
         .CE(1'b1),
@@ -264,237 +313,263 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
         .Q(Tx),
         .R(1'b0));
   LUT4 #(
-    .INIT(16'h5E50)) 
+    .INIT(16'h4440)) 
     \Tx_shift_registers[0]_i_1 
-       (.I0(\current_state_reg_n_0_[1] ),
+       (.I0(\current_state_reg_n_0_[0] ),
+        .I1(\Tx_shift_registers_reg_n_0_[1] ),
+        .I2(\current_state_reg_n_0_[2] ),
+        .I3(\current_state_reg_n_0_[1] ),
+        .O(\Tx_shift_registers[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT5 #(
+    .INIT(32'hEFEEAAAA)) 
+    \Tx_shift_registers[1]_i_1 
+       (.I0(\Tx_shift_registers[1]_i_2_n_0 ),
         .I1(\current_state_reg_n_0_[2] ),
         .I2(\current_state_reg_n_0_[0] ),
-        .I3(\Tx_shift_registers_reg_n_0_[1] ),
-        .O(\Tx_shift_registers[0]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hFF8C8080)) 
-    \Tx_shift_registers[1]_i_1 
-       (.I0(Tx_in[0]),
-        .I1(\current_state_reg_n_0_[1] ),
-        .I2(\current_state_reg_n_0_[0] ),
-        .I3(\current_state_reg_n_0_[2] ),
+        .I3(\current_state_reg_n_0_[1] ),
         .I4(\Tx_shift_registers_reg_n_0_[2] ),
         .O(\Tx_shift_registers[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFCCEAC0C0CCEAC0)) 
-    \Tx_shift_registers[2]_i_1 
-       (.I0(\Tx_shift_registers[2]_i_2_n_0 ),
-        .I1(\Tx_shift_registers_reg_n_0_[3] ),
-        .I2(\current_state_reg_n_0_[2] ),
+    .INIT(64'hFF00B8000000B800)) 
+    \Tx_shift_registers[1]_i_2 
+       (.I0(fifo_data[32]),
+        .I1(Tx_line_index__0[2]),
+        .I2(\Tx_shift_registers[1]_i_3_n_0 ),
         .I3(\current_state_reg_n_0_[0] ),
         .I4(\current_state_reg_n_0_[1] ),
-        .I5(Tx_in[1]),
-        .O(\Tx_shift_registers[2]_i_1_n_0 ));
+        .I5(Tx_data_in[0]),
+        .O(\Tx_shift_registers[1]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hAFA0CFCFAFA0C0C0)) 
+    \Tx_shift_registers[1]_i_3 
+       (.I0(fifo_data[24]),
+        .I1(fifo_data[16]),
+        .I2(Tx_line_index__0[1]),
+        .I3(fifo_data[8]),
+        .I4(Tx_line_index__0[0]),
+        .I5(fifo_data[0]),
+        .O(\Tx_shift_registers[1]_i_3_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
-    .INIT(32'hB8FFB800)) 
+    .INIT(32'hEFEEAAAA)) 
+    \Tx_shift_registers[2]_i_1 
+       (.I0(\Tx_shift_registers[2]_i_2_n_0 ),
+        .I1(\current_state_reg_n_0_[2] ),
+        .I2(\current_state_reg_n_0_[0] ),
+        .I3(\current_state_reg_n_0_[1] ),
+        .I4(\Tx_shift_registers_reg_n_0_[3] ),
+        .O(\Tx_shift_registers[2]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFF00B8000000B800)) 
     \Tx_shift_registers[2]_i_2 
-       (.I0(fifo_data[35]),
-        .I1(Tx_line_index__0[0]),
-        .I2(fifo_data[28]),
-        .I3(Tx_line_index__0[2]),
-        .I4(\Tx_shift_registers[2]_i_3_n_0 ),
+       (.I0(fifo_data[33]),
+        .I1(Tx_line_index__0[2]),
+        .I2(\Tx_shift_registers[2]_i_3_n_0 ),
+        .I3(\current_state_reg_n_0_[0] ),
+        .I4(\current_state_reg_n_0_[1] ),
+        .I5(Tx_data_in[1]),
         .O(\Tx_shift_registers[2]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \Tx_shift_registers[2]_i_3 
-       (.I0(fifo_data[21]),
-        .I1(fifo_data[14]),
+       (.I0(fifo_data[25]),
+        .I1(fifo_data[17]),
         .I2(Tx_line_index__0[1]),
-        .I3(fifo_data[7]),
+        .I3(fifo_data[9]),
         .I4(Tx_line_index__0[0]),
-        .I5(fifo_data[0]),
+        .I5(fifo_data[1]),
         .O(\Tx_shift_registers[2]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFCCEAC0C0CCEAC0)) 
+  LUT5 #(
+    .INIT(32'hEFEEAAAA)) 
     \Tx_shift_registers[3]_i_1 
        (.I0(\Tx_shift_registers[3]_i_2_n_0 ),
-        .I1(\Tx_shift_registers_reg_n_0_[4] ),
-        .I2(\current_state_reg_n_0_[2] ),
+        .I1(\current_state_reg_n_0_[2] ),
+        .I2(\current_state_reg_n_0_[0] ),
+        .I3(\current_state_reg_n_0_[1] ),
+        .I4(\Tx_shift_registers_reg_n_0_[4] ),
+        .O(\Tx_shift_registers[3]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFF00B8000000B800)) 
+    \Tx_shift_registers[3]_i_2 
+       (.I0(fifo_data[34]),
+        .I1(Tx_line_index__0[2]),
+        .I2(\Tx_shift_registers[3]_i_3_n_0 ),
         .I3(\current_state_reg_n_0_[0] ),
         .I4(\current_state_reg_n_0_[1] ),
-        .I5(Tx_in[2]),
-        .O(\Tx_shift_registers[3]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \Tx_shift_registers[3]_i_2 
-       (.I0(fifo_data[36]),
-        .I1(Tx_line_index__0[0]),
-        .I2(fifo_data[29]),
-        .I3(Tx_line_index__0[2]),
-        .I4(\Tx_shift_registers[3]_i_3_n_0 ),
+        .I5(Tx_data_in[2]),
         .O(\Tx_shift_registers[3]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \Tx_shift_registers[3]_i_3 
-       (.I0(fifo_data[22]),
-        .I1(fifo_data[15]),
+       (.I0(fifo_data[26]),
+        .I1(fifo_data[18]),
         .I2(Tx_line_index__0[1]),
-        .I3(fifo_data[8]),
+        .I3(fifo_data[10]),
         .I4(Tx_line_index__0[0]),
-        .I5(fifo_data[1]),
+        .I5(fifo_data[2]),
         .O(\Tx_shift_registers[3]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFCCEAC0C0CCEAC0)) 
+  LUT5 #(
+    .INIT(32'hEFEEAAAA)) 
     \Tx_shift_registers[4]_i_1 
        (.I0(\Tx_shift_registers[4]_i_2_n_0 ),
-        .I1(\Tx_shift_registers_reg_n_0_[5] ),
-        .I2(\current_state_reg_n_0_[2] ),
+        .I1(\current_state_reg_n_0_[2] ),
+        .I2(\current_state_reg_n_0_[0] ),
+        .I3(\current_state_reg_n_0_[1] ),
+        .I4(\Tx_shift_registers_reg_n_0_[5] ),
+        .O(\Tx_shift_registers[4]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFF00B8000000B800)) 
+    \Tx_shift_registers[4]_i_2 
+       (.I0(fifo_data[35]),
+        .I1(Tx_line_index__0[2]),
+        .I2(\Tx_shift_registers[4]_i_3_n_0 ),
         .I3(\current_state_reg_n_0_[0] ),
         .I4(\current_state_reg_n_0_[1] ),
-        .I5(Tx_in[3]),
-        .O(\Tx_shift_registers[4]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \Tx_shift_registers[4]_i_2 
-       (.I0(fifo_data[37]),
-        .I1(Tx_line_index__0[0]),
-        .I2(fifo_data[30]),
-        .I3(Tx_line_index__0[2]),
-        .I4(\Tx_shift_registers[4]_i_3_n_0 ),
+        .I5(Tx_data_in[3]),
         .O(\Tx_shift_registers[4]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \Tx_shift_registers[4]_i_3 
-       (.I0(fifo_data[23]),
-        .I1(fifo_data[16]),
+       (.I0(fifo_data[27]),
+        .I1(fifo_data[19]),
         .I2(Tx_line_index__0[1]),
-        .I3(fifo_data[9]),
+        .I3(fifo_data[11]),
         .I4(Tx_line_index__0[0]),
-        .I5(fifo_data[2]),
+        .I5(fifo_data[3]),
         .O(\Tx_shift_registers[4]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFCCEAC0C0CCEAC0)) 
+  LUT5 #(
+    .INIT(32'hEFEEAAAA)) 
     \Tx_shift_registers[5]_i_1 
        (.I0(\Tx_shift_registers[5]_i_2_n_0 ),
-        .I1(\Tx_shift_registers_reg_n_0_[6] ),
-        .I2(\current_state_reg_n_0_[2] ),
+        .I1(\current_state_reg_n_0_[2] ),
+        .I2(\current_state_reg_n_0_[0] ),
+        .I3(\current_state_reg_n_0_[1] ),
+        .I4(\Tx_shift_registers_reg_n_0_[6] ),
+        .O(\Tx_shift_registers[5]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFF00B8000000B800)) 
+    \Tx_shift_registers[5]_i_2 
+       (.I0(fifo_data[36]),
+        .I1(Tx_line_index__0[2]),
+        .I2(\Tx_shift_registers[5]_i_3_n_0 ),
         .I3(\current_state_reg_n_0_[0] ),
         .I4(\current_state_reg_n_0_[1] ),
-        .I5(Tx_in[4]),
-        .O(\Tx_shift_registers[5]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \Tx_shift_registers[5]_i_2 
-       (.I0(fifo_data[38]),
-        .I1(Tx_line_index__0[0]),
-        .I2(fifo_data[31]),
-        .I3(Tx_line_index__0[2]),
-        .I4(\Tx_shift_registers[5]_i_3_n_0 ),
+        .I5(Tx_data_in[4]),
         .O(\Tx_shift_registers[5]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \Tx_shift_registers[5]_i_3 
-       (.I0(fifo_data[24]),
-        .I1(fifo_data[17]),
+       (.I0(fifo_data[28]),
+        .I1(fifo_data[20]),
         .I2(Tx_line_index__0[1]),
-        .I3(fifo_data[10]),
+        .I3(fifo_data[12]),
         .I4(Tx_line_index__0[0]),
-        .I5(fifo_data[3]),
+        .I5(fifo_data[4]),
         .O(\Tx_shift_registers[5]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFCCEAC0C0CCEAC0)) 
+  LUT5 #(
+    .INIT(32'hEFEEAAAA)) 
     \Tx_shift_registers[6]_i_1 
        (.I0(\Tx_shift_registers[6]_i_2_n_0 ),
-        .I1(\Tx_shift_registers_reg_n_0_[7] ),
-        .I2(\current_state_reg_n_0_[2] ),
+        .I1(\current_state_reg_n_0_[2] ),
+        .I2(\current_state_reg_n_0_[0] ),
+        .I3(\current_state_reg_n_0_[1] ),
+        .I4(\Tx_shift_registers_reg_n_0_[7] ),
+        .O(\Tx_shift_registers[6]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hFF00B8000000B800)) 
+    \Tx_shift_registers[6]_i_2 
+       (.I0(fifo_data[37]),
+        .I1(Tx_line_index__0[2]),
+        .I2(\Tx_shift_registers[6]_i_3_n_0 ),
         .I3(\current_state_reg_n_0_[0] ),
         .I4(\current_state_reg_n_0_[1] ),
-        .I5(Tx_in[5]),
-        .O(\Tx_shift_registers[6]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8FFB800)) 
-    \Tx_shift_registers[6]_i_2 
-       (.I0(fifo_data[39]),
-        .I1(Tx_line_index__0[0]),
-        .I2(fifo_data[32]),
-        .I3(Tx_line_index__0[2]),
-        .I4(\Tx_shift_registers[6]_i_3_n_0 ),
+        .I5(Tx_data_in[5]),
         .O(\Tx_shift_registers[6]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \Tx_shift_registers[6]_i_3 
-       (.I0(fifo_data[25]),
-        .I1(fifo_data[18]),
+       (.I0(fifo_data[29]),
+        .I1(fifo_data[21]),
         .I2(Tx_line_index__0[1]),
-        .I3(fifo_data[11]),
+        .I3(fifo_data[13]),
         .I4(Tx_line_index__0[0]),
-        .I5(fifo_data[4]),
+        .I5(fifo_data[5]),
         .O(\Tx_shift_registers[6]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFEEEAEAEAEEEAEA)) 
+  LUT5 #(
+    .INIT(32'hEFEEAAAA)) 
     \Tx_shift_registers[7]_i_1 
        (.I0(\Tx_shift_registers[7]_i_2_n_0 ),
-        .I1(\Tx_shift_registers_reg_n_0_[8] ),
-        .I2(\current_state_reg_n_0_[2] ),
-        .I3(\current_state_reg_n_0_[0] ),
-        .I4(\current_state_reg_n_0_[1] ),
-        .I5(Tx_in[6]),
+        .I1(\current_state_reg_n_0_[2] ),
+        .I2(\current_state_reg_n_0_[0] ),
+        .I3(\current_state_reg_n_0_[1] ),
+        .I4(\Tx_shift_registers_reg_n_0_[8] ),
         .O(\Tx_shift_registers[7]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h000000002E220000)) 
+    .INIT(64'hFF00B8000000B800)) 
     \Tx_shift_registers[7]_i_2 
-       (.I0(\Tx_shift_registers[7]_i_3_n_0 ),
+       (.I0(fifo_data[38]),
         .I1(Tx_line_index__0[2]),
-        .I2(Tx_line_index__0[0]),
-        .I3(fifo_data[33]),
-        .I4(\current_state_reg_n_0_[0] ),
-        .I5(\current_state_reg_n_0_[1] ),
+        .I2(\Tx_shift_registers[7]_i_3_n_0 ),
+        .I3(\current_state_reg_n_0_[0] ),
+        .I4(\current_state_reg_n_0_[1] ),
+        .I5(Tx_data_in[6]),
         .O(\Tx_shift_registers[7]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \Tx_shift_registers[7]_i_3 
-       (.I0(fifo_data[26]),
-        .I1(fifo_data[19]),
+       (.I0(fifo_data[30]),
+        .I1(fifo_data[22]),
         .I2(Tx_line_index__0[1]),
-        .I3(fifo_data[12]),
+        .I3(fifo_data[14]),
         .I4(Tx_line_index__0[0]),
-        .I5(fifo_data[5]),
+        .I5(fifo_data[6]),
         .O(\Tx_shift_registers[7]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'hFFEEEAEAEAEEEAEA)) 
+  LUT5 #(
+    .INIT(32'hEFEEAAAA)) 
     \Tx_shift_registers[8]_i_1 
        (.I0(\Tx_shift_registers[8]_i_2_n_0 ),
-        .I1(\Tx_shift_registers_reg_n_0_[9] ),
-        .I2(\current_state_reg_n_0_[2] ),
-        .I3(\current_state_reg_n_0_[0] ),
-        .I4(\current_state_reg_n_0_[1] ),
-        .I5(Tx_in[7]),
+        .I1(\current_state_reg_n_0_[2] ),
+        .I2(\current_state_reg_n_0_[0] ),
+        .I3(\current_state_reg_n_0_[1] ),
+        .I4(\Tx_shift_registers_reg_n_0_[9] ),
         .O(\Tx_shift_registers[8]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h000000002E220000)) 
+    .INIT(64'hFF00B8000000B800)) 
     \Tx_shift_registers[8]_i_2 
-       (.I0(\Tx_shift_registers[8]_i_3_n_0 ),
+       (.I0(fifo_data[39]),
         .I1(Tx_line_index__0[2]),
-        .I2(Tx_line_index__0[0]),
-        .I3(fifo_data[34]),
-        .I4(\current_state_reg_n_0_[0] ),
-        .I5(\current_state_reg_n_0_[1] ),
+        .I2(\Tx_shift_registers[8]_i_3_n_0 ),
+        .I3(\current_state_reg_n_0_[0] ),
+        .I4(\current_state_reg_n_0_[1] ),
+        .I5(Tx_data_in[7]),
         .O(\Tx_shift_registers[8]_i_2_n_0 ));
   LUT6 #(
     .INIT(64'hAFA0CFCFAFA0C0C0)) 
     \Tx_shift_registers[8]_i_3 
-       (.I0(fifo_data[27]),
-        .I1(fifo_data[20]),
+       (.I0(fifo_data[31]),
+        .I1(fifo_data[23]),
         .I2(Tx_line_index__0[1]),
-        .I3(fifo_data[13]),
+        .I3(fifo_data[15]),
         .I4(Tx_line_index__0[0]),
-        .I5(fifo_data[6]),
+        .I5(fifo_data[7]),
         .O(\Tx_shift_registers[8]_i_3_n_0 ));
-  LUT6 #(
-    .INIT(64'h5555555505557777)) 
+  LUT4 #(
+    .INIT(16'hAAFE)) 
     \Tx_shift_registers[9]_i_1 
-       (.I0(\current_state_reg_n_0_[2] ),
-        .I1(Tx_i_2_n_0),
-        .I2(Tx_line_index__0[1]),
-        .I3(Tx_line_index__0[2]),
-        .I4(\current_state_reg_n_0_[0] ),
-        .I5(\current_state_reg_n_0_[1] ),
+       (.I0(Tx_i_2_n_0),
+        .I1(\current_state_reg_n_0_[1] ),
+        .I2(\Tx_shift_registers[9]_i_2_n_0 ),
+        .I3(\current_state_reg_n_0_[2] ),
         .O(\Tx_shift_registers[9]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h1FFF)) 
+    \Tx_shift_registers[9]_i_2 
+       (.I0(Tx_line_index__0[0]),
+        .I1(Tx_line_index__0[1]),
+        .I2(Tx_line_index__0[2]),
+        .I3(\current_state_reg_n_0_[0] ),
+        .O(\Tx_shift_registers[9]_i_2_n_0 ));
   FDRE \Tx_shift_registers_reg[0] 
        (.C(UART_clk),
         .CE(\Tx_shift_registers[9]_i_1_n_0 ),
@@ -556,55 +631,71 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
         .Q(\Tx_shift_registers_reg_n_0_[9] ),
         .R(1'b0));
   LUT6 #(
-    .INIT(64'h0000000000F000EE)) 
+    .INIT(64'h0000000000007774)) 
     \current_state[0]_i_1 
-       (.I0(Tx_en),
-        .I1(read_enable),
-        .I2(Tx_i_2_n_0),
-        .I3(\current_state_reg_n_0_[2] ),
-        .I4(\current_state_reg_n_0_[1] ),
+       (.I0(\current_state[0]_i_2_n_0 ),
+        .I1(\current_state_reg_n_0_[1] ),
+        .I2(read_enable),
+        .I3(Tx_en),
+        .I4(\current_state_reg_n_0_[2] ),
         .I5(\current_state_reg_n_0_[0] ),
         .O(\current_state[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT4 #(
+    .INIT(16'hFFF7)) 
+    \current_state[0]_i_2 
+       (.I0(\tx_counter_reg_n_0_[3] ),
+        .I1(\tx_counter_reg_n_0_[0] ),
+        .I2(\tx_counter_reg_n_0_[2] ),
+        .I3(\tx_counter_reg_n_0_[1] ),
+        .O(\current_state[0]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h4445FFFF44440000)) 
+    .INIT(64'hAA08FFFFAA080000)) 
     \current_state[1]_i_1 
-       (.I0(\current_state_reg_n_0_[2] ),
-        .I1(\current_state[1]_i_2_n_0 ),
-        .I2(Tx_i_2_n_0),
+       (.I0(\current_state[1]_i_2_n_0 ),
+        .I1(Tx_en),
+        .I2(read_enable),
         .I3(\current_state_reg_n_0_[0] ),
         .I4(\current_state[2]_i_2_n_0 ),
         .I5(\current_state_reg_n_0_[1] ),
         .O(\current_state[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000777700000F00)) 
+    .INIT(64'h000000000000777F)) 
     \current_state[1]_i_2 
-       (.I0(Tx_line_index__0[2]),
-        .I1(Tx_line_index__0[1]),
-        .I2(read_enable),
-        .I3(Tx_en),
-        .I4(\current_state_reg_n_0_[1] ),
-        .I5(\current_state_reg_n_0_[0] ),
+       (.I0(\current_state_reg_n_0_[0] ),
+        .I1(Tx_line_index__0[2]),
+        .I2(Tx_line_index__0[1]),
+        .I3(Tx_line_index__0[0]),
+        .I4(\current_state_reg_n_0_[2] ),
+        .I5(\current_state_reg_n_0_[1] ),
         .O(\current_state[1]_i_2_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
-    .INIT(32'h01FFC000)) 
+    .INIT(32'hAAFFC000)) 
     \current_state[2]_i_1 
        (.I0(Tx_i_2_n_0),
-        .I1(\current_state_reg_n_0_[1] ),
-        .I2(\current_state_reg_n_0_[0] ),
+        .I1(\current_state_reg_n_0_[0] ),
+        .I2(\current_state_reg_n_0_[1] ),
         .I3(\current_state[2]_i_2_n_0 ),
         .I4(\current_state_reg_n_0_[2] ),
         .O(\current_state[2]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'hFFFFFFFFFFFFFFFE)) 
+    .INIT(64'hFFFF0EFEFFFFFFFF)) 
     \current_state[2]_i_2 
-       (.I0(\current_state_reg_n_0_[2] ),
-        .I1(\current_state_reg_n_0_[1] ),
-        .I2(\current_state_reg_n_0_[0] ),
-        .I3(rst),
-        .I4(Tx_en),
-        .I5(read_enable),
+       (.I0(Tx_en),
+        .I1(read_enable),
+        .I2(\current_state_reg_n_0_[1] ),
+        .I3(\current_state[0]_i_2_n_0 ),
+        .I4(rst),
+        .I5(\current_state[2]_i_3_n_0 ),
         .O(\current_state[2]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    \current_state[2]_i_3 
+       (.I0(\current_state_reg_n_0_[2] ),
+        .I1(\current_state_reg_n_0_[0] ),
+        .O(\current_state[2]_i_3_n_0 ));
   FDRE \current_state_reg[0] 
        (.C(UART_clk),
         .CE(1'b1),
@@ -626,16 +717,16 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
   LUT3 #(
     .INIT(8'h01)) 
     \fifo_data[39]_i_1 
-       (.I0(\current_state_reg_n_0_[2] ),
-        .I1(\current_state_reg_n_0_[1] ),
+       (.I0(\current_state_reg_n_0_[1] ),
+        .I1(\current_state_reg_n_0_[2] ),
         .I2(\current_state_reg_n_0_[0] ),
         .O(\fifo_data[39]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h0000000103030303)) 
+    .INIT(64'h0000000111111111)) 
     \fifo_data[39]_i_2 
-       (.I0(Tx_line_index__0[0]),
+       (.I0(\current_state_reg_n_0_[2] ),
         .I1(\current_state_reg_n_0_[1] ),
-        .I2(\current_state_reg_n_0_[2] ),
+        .I2(Tx_line_index__0[0]),
         .I3(Tx_line_index__0[2]),
         .I4(Tx_line_index__0[1]),
         .I5(\current_state_reg_n_0_[0] ),
@@ -893,20 +984,77 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_tx
         .D(rd_en_i_1_n_0),
         .Q(rd_en),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'hFE0C)) 
-    transmit_lock_i_1
+  LUT2 #(
+    .INIT(4'h2)) 
+    \tx_counter[0]_i_1 
        (.I0(\current_state_reg_n_0_[1] ),
+        .I1(\tx_counter_reg_n_0_[0] ),
+        .O(\tx_counter[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT3 #(
+    .INIT(8'h60)) 
+    \tx_counter[1]_i_1 
+       (.I0(\tx_counter_reg_n_0_[1] ),
+        .I1(\tx_counter_reg_n_0_[0] ),
+        .I2(\current_state_reg_n_0_[1] ),
+        .O(\tx_counter[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT4 #(
+    .INIT(16'h2A80)) 
+    \tx_counter[2]_i_1 
+       (.I0(\current_state_reg_n_0_[1] ),
+        .I1(\tx_counter_reg_n_0_[0] ),
+        .I2(\tx_counter_reg_n_0_[1] ),
+        .I3(\tx_counter_reg_n_0_[2] ),
+        .O(\tx_counter[2]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'h14)) 
+    \tx_counter[3]_i_1 
+       (.I0(\current_state_reg_n_0_[2] ),
         .I1(\current_state_reg_n_0_[0] ),
-        .I2(\current_state_reg_n_0_[2] ),
-        .I3(tx_lock),
-        .O(transmit_lock_i_1_n_0));
-  FDRE transmit_lock_reg
+        .I2(\current_state_reg_n_0_[1] ),
+        .O(\tx_counter[3]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT5 #(
+    .INIT(32'h7F800000)) 
+    \tx_counter[3]_i_2 
+       (.I0(\tx_counter_reg_n_0_[1] ),
+        .I1(\tx_counter_reg_n_0_[0] ),
+        .I2(\tx_counter_reg_n_0_[2] ),
+        .I3(\tx_counter_reg_n_0_[3] ),
+        .I4(\current_state_reg_n_0_[1] ),
+        .O(\tx_counter[3]_i_2_n_0 ));
+  FDRE #(
+    .INIT(1'b0)) 
+    \tx_counter_reg[0] 
        (.C(UART_clk),
-        .CE(1'b1),
-        .D(transmit_lock_i_1_n_0),
-        .Q(tx_lock),
+        .CE(\tx_counter[3]_i_1_n_0 ),
+        .D(\tx_counter[0]_i_1_n_0 ),
+        .Q(\tx_counter_reg_n_0_[0] ),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \tx_counter_reg[1] 
+       (.C(UART_clk),
+        .CE(\tx_counter[3]_i_1_n_0 ),
+        .D(\tx_counter[1]_i_1_n_0 ),
+        .Q(\tx_counter_reg_n_0_[1] ),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \tx_counter_reg[2] 
+       (.C(UART_clk),
+        .CE(\tx_counter[3]_i_1_n_0 ),
+        .D(\tx_counter[2]_i_1_n_0 ),
+        .Q(\tx_counter_reg_n_0_[2] ),
+        .R(1'b0));
+  FDRE #(
+    .INIT(1'b0)) 
+    \tx_counter_reg[3] 
+       (.C(UART_clk),
+        .CE(\tx_counter[3]_i_1_n_0 ),
+        .D(\tx_counter[3]_i_2_n_0 ),
+        .Q(\tx_counter_reg_n_0_[3] ),
         .R(1'b0));
 endmodule
 `ifndef GLBL

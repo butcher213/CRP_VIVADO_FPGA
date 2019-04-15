@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-// Date        : Sat Mar  9 11:08:08 2019
+// Date        : Thu Mar 21 17:44:33 2019
 // Host        : BEAST running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/butchertd/Documents/eaglesat/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0_sim_netlist.v
+//               C:/Users/butchertd/Documents/eaglesat/CRP_VIVADO_FPGA/uart_testing/uart_testing.srcs/sources_1/bd/fpga_design/ip/fpga_design_central_interface_0_0/fpga_design_central_interface_0_0_sim_netlist.v
 // Design      : fpga_design_central_interface_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -80,22 +80,22 @@ module fpga_design_central_interface_0_0_central_interface
     read_enable,
     clk,
     Rx_in,
-    Rx_end,
-    rst,
-    FIFO_empty,
+    FIFO_ready,
     FIFO_full,
-    FIFO_ready);
+    FIFO_empty,
+    Rx_end,
+    rst);
   output [11:0]threshold_out;
   output [4:0]Tx_out;
   output Tx_en;
   output read_enable;
   input clk;
   input [7:0]Rx_in;
+  input FIFO_ready;
+  input FIFO_full;
+  input FIFO_empty;
   input Rx_end;
   input rst;
-  input FIFO_empty;
-  input FIFO_full;
-  input FIFO_ready;
 
   wire FIFO_empty;
   wire FIFO_full;
@@ -110,6 +110,7 @@ module fpga_design_central_interface_0_0_central_interface
   wire \FSM_sequential_current_state[2]_i_3_n_0 ;
   wire \FSM_sequential_current_state[2]_i_4_n_0 ;
   wire \FSM_sequential_current_state[2]_i_5_n_0 ;
+  wire \FSM_sequential_current_state[2]_i_6_n_0 ;
   wire Rx_end;
   wire [7:0]Rx_in;
   wire Tx_en;
@@ -119,17 +120,19 @@ module fpga_design_central_interface_0_0_central_interface
   wire [4:0]Tx_out;
   wire \Tx_out[0]_i_1_n_0 ;
   wire \Tx_out[1]_i_1_n_0 ;
-  wire \Tx_out[1]_i_2_n_0 ;
+  wire \Tx_out[1]_i_3_n_0 ;
+  wire \Tx_out[1]_i_4_n_0 ;
+  wire \Tx_out[1]_i_5_n_0 ;
   wire \Tx_out[2]_i_1_n_0 ;
   wire \Tx_out[3]_i_1_n_0 ;
   wire \Tx_out[4]_i_1_n_0 ;
-  wire \Tx_out[4]_i_2_n_0 ;
   wire clk;
   (* RTL_KEEP = "yes" *) wire [2:0]current_state__0;
   wire read_enable;
   wire read_enable_i_1_n_0;
   wire rst;
   wire [11:11]threshold;
+  wire [4:4]threshold0_in;
   wire [11:0]threshold_out;
   wire \threshold_out[11]_i_1_n_0 ;
   wire \threshold_reg_n_0_[0] ;
@@ -145,100 +148,101 @@ module fpga_design_central_interface_0_0_central_interface
   wire \threshold_reg_n_0_[8] ;
   wire \threshold_reg_n_0_[9] ;
 
-  LUT6 #(
-    .INIT(64'hF888FFFFF8880000)) 
-    \FSM_sequential_current_state[0]_i_1 
-       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
-        .I1(\FSM_sequential_current_state[0]_i_2_n_0 ),
-        .I2(current_state__0[1]),
-        .I3(\Tx_out[1]_i_2_n_0 ),
-        .I4(\FSM_sequential_current_state[2]_i_3_n_0 ),
-        .I5(current_state__0[0]),
-        .O(\FSM_sequential_current_state[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000080000080800)) 
-    \FSM_sequential_current_state[0]_i_2 
-       (.I0(\Tx_out[1]_i_2_n_0 ),
-        .I1(Rx_end),
-        .I2(Rx_in[4]),
-        .I3(Rx_in[5]),
-        .I4(Rx_in[6]),
-        .I5(FIFO_empty),
-        .O(\FSM_sequential_current_state[0]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'hF888FFFFF8880000)) 
-    \FSM_sequential_current_state[1]_i_1 
-       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
-        .I1(\FSM_sequential_current_state[1]_i_3_n_0 ),
-        .I2(current_state__0[1]),
-        .I3(\Tx_out[1]_i_2_n_0 ),
-        .I4(\FSM_sequential_current_state[2]_i_3_n_0 ),
-        .I5(current_state__0[1]),
-        .O(\FSM_sequential_current_state[1]_i_1_n_0 ));
   LUT5 #(
-    .INIT(32'h00000001)) 
-    \FSM_sequential_current_state[1]_i_2 
-       (.I0(Rx_in[0]),
-        .I1(Rx_in[1]),
-        .I2(Rx_in[2]),
-        .I3(Rx_in[3]),
-        .I4(Rx_in[7]),
-        .O(\FSM_sequential_current_state[1]_i_2_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000020)) 
-    \FSM_sequential_current_state[1]_i_3 
-       (.I0(Rx_end),
+    .INIT(32'hF8FFF800)) 
+    \FSM_sequential_current_state[0]_i_1 
+       (.I0(\Tx_out[1]_i_4_n_0 ),
+        .I1(\FSM_sequential_current_state[0]_i_2_n_0 ),
+        .I2(\FSM_sequential_current_state[1]_i_3_n_0 ),
+        .I3(\FSM_sequential_current_state[2]_i_3_n_0 ),
+        .I4(current_state__0[0]),
+        .O(\FSM_sequential_current_state[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h0026)) 
+    \FSM_sequential_current_state[0]_i_2 
+       (.I0(Rx_in[5]),
         .I1(Rx_in[6]),
+        .I2(FIFO_empty),
+        .I3(Rx_in[4]),
+        .O(\FSM_sequential_current_state[0]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'hF8FFF800)) 
+    \FSM_sequential_current_state[1]_i_1 
+       (.I0(\Tx_out[1]_i_4_n_0 ),
+        .I1(\FSM_sequential_current_state[1]_i_2_n_0 ),
+        .I2(\FSM_sequential_current_state[1]_i_3_n_0 ),
+        .I3(\FSM_sequential_current_state[2]_i_3_n_0 ),
+        .I4(current_state__0[1]),
+        .O(\FSM_sequential_current_state[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT3 #(
+    .INIT(8'h10)) 
+    \FSM_sequential_current_state[1]_i_2 
+       (.I0(Rx_in[6]),
+        .I1(Rx_in[5]),
         .I2(Rx_in[4]),
-        .I3(Rx_in[5]),
-        .I4(current_state__0[2]),
-        .I5(current_state__0[0]),
+        .O(\FSM_sequential_current_state[1]_i_2_n_0 ));
+  LUT3 #(
+    .INIT(8'h10)) 
+    \FSM_sequential_current_state[1]_i_3 
+       (.I0(current_state__0[2]),
+        .I1(current_state__0[0]),
+        .I2(current_state__0[1]),
         .O(\FSM_sequential_current_state[1]_i_3_n_0 ));
   LUT5 #(
     .INIT(32'hEAFFEA00)) 
     \FSM_sequential_current_state[2]_i_1 
        (.I0(threshold),
-        .I1(Tx_en_i_2_n_0),
+        .I1(\Tx_out[1]_i_4_n_0 ),
         .I2(\FSM_sequential_current_state[2]_i_2_n_0 ),
         .I3(\FSM_sequential_current_state[2]_i_3_n_0 ),
         .I4(current_state__0[2]),
         .O(\FSM_sequential_current_state[2]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0000000000000002)) 
-    \FSM_sequential_current_state[2]_i_2 
-       (.I0(Rx_in[6]),
-        .I1(Rx_in[5]),
-        .I2(FIFO_empty),
-        .I3(Rx_in[4]),
-        .I4(current_state__0[2]),
-        .I5(current_state__0[0]),
-        .O(\FSM_sequential_current_state[2]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'hAAEAAAAA)) 
+    .INIT(32'h00010000)) 
+    \FSM_sequential_current_state[2]_i_2 
+       (.I0(FIFO_empty),
+        .I1(Rx_in[4]),
+        .I2(Rx_in[5]),
+        .I3(current_state__0[1]),
+        .I4(Rx_in[6]),
+        .O(\FSM_sequential_current_state[2]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'hEEEEEEEEFFFEFEFE)) 
     \FSM_sequential_current_state[2]_i_3 
        (.I0(\FSM_sequential_current_state[2]_i_4_n_0 ),
         .I1(\FSM_sequential_current_state[2]_i_5_n_0 ),
-        .I2(\FSM_sequential_current_state[1]_i_2_n_0 ),
-        .I3(current_state__0[1]),
-        .I4(Rx_end),
+        .I2(rst),
+        .I3(\FSM_sequential_current_state[2]_i_6_n_0 ),
+        .I4(Tx_en_i_2_n_0),
+        .I5(current_state__0[1]),
         .O(\FSM_sequential_current_state[2]_i_3_n_0 ));
-  LUT5 #(
-    .INIT(32'h33FF32E6)) 
+  LUT4 #(
+    .INIT(16'h2F28)) 
     \FSM_sequential_current_state[2]_i_4 
-       (.I0(current_state__0[0]),
-        .I1(current_state__0[1]),
-        .I2(Rx_end),
-        .I3(current_state__0[2]),
-        .I4(rst),
+       (.I0(Rx_end),
+        .I1(current_state__0[2]),
+        .I2(current_state__0[1]),
+        .I3(current_state__0[0]),
         .O(\FSM_sequential_current_state[2]_i_4_n_0 ));
   LUT4 #(
-    .INIT(16'h051A)) 
+    .INIT(16'h00AE)) 
     \FSM_sequential_current_state[2]_i_5 
+       (.I0(rst),
+        .I1(current_state__0[1]),
+        .I2(current_state__0[0]),
+        .I3(current_state__0[2]),
+        .O(\FSM_sequential_current_state[2]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h051A)) 
+    \FSM_sequential_current_state[2]_i_6 
        (.I0(Rx_in[4]),
         .I1(FIFO_empty),
         .I2(Rx_in[6]),
         .I3(Rx_in[5]),
-        .O(\FSM_sequential_current_state[2]_i_5_n_0 ));
+        .O(\FSM_sequential_current_state[2]_i_6_n_0 ));
   (* FSM_ENCODED_STATES = "threshold_rx_1:011,fifo_status:001,change_threshold:010,fifo_read:101,init:000,threshold_rx_2:100" *) 
   (* KEEP = "yes" *) 
   FDRE #(
@@ -279,21 +283,25 @@ module fpga_design_central_interface_0_0_central_interface
         .I4(current_state__0[2]),
         .I5(Tx_en),
         .O(Tx_en_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h20)) 
+  LUT6 #(
+    .INIT(64'h0000000000000010)) 
     Tx_en_i_2
-       (.I0(\FSM_sequential_current_state[1]_i_2_n_0 ),
-        .I1(current_state__0[1]),
+       (.I0(Rx_in[2]),
+        .I1(Rx_in[3]),
         .I2(Rx_end),
+        .I3(Rx_in[7]),
+        .I4(Rx_in[1]),
+        .I5(Rx_in[0]),
         .O(Tx_en_i_2_n_0));
-  LUT5 #(
-    .INIT(32'h00020000)) 
+  LUT6 #(
+    .INIT(64'h0000001000000000)) 
     Tx_en_i_3
-       (.I0(FIFO_empty),
-        .I1(Rx_in[4]),
-        .I2(Rx_in[5]),
+       (.I0(Rx_in[4]),
+        .I1(Rx_in[5]),
+        .I2(FIFO_empty),
         .I3(current_state__0[2]),
-        .I4(Rx_in[6]),
+        .I4(current_state__0[1]),
+        .I5(Rx_in[6]),
         .O(Tx_en_i_3_n_0));
   FDRE Tx_en_reg
        (.C(clk),
@@ -301,87 +309,106 @@ module fpga_design_central_interface_0_0_central_interface
         .D(Tx_en_i_1_n_0),
         .Q(Tx_en),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'h10)) 
+  LUT4 #(
+    .INIT(16'hD210)) 
     \Tx_out[0]_i_1 
-       (.I0(current_state__0[2]),
-        .I1(current_state__0[0]),
-        .I2(current_state__0[1]),
-        .O(\Tx_out[0]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h0020000000000000)) 
-    \Tx_out[1]_i_1 
-       (.I0(\Tx_out[1]_i_2_n_0 ),
-        .I1(Rx_in[4]),
-        .I2(FIFO_empty),
-        .I3(Rx_in[5]),
-        .I4(Rx_in[6]),
-        .I5(Tx_en_i_2_n_0),
-        .O(\Tx_out[1]_i_1_n_0 ));
-  LUT2 #(
-    .INIT(4'h1)) 
-    \Tx_out[1]_i_2 
        (.I0(current_state__0[0]),
         .I1(current_state__0[2]),
-        .O(\Tx_out[1]_i_2_n_0 ));
-  LUT4 #(
-    .INIT(16'h0400)) 
-    \Tx_out[2]_i_1 
-       (.I0(current_state__0[2]),
-        .I1(current_state__0[0]),
         .I2(current_state__0[1]),
-        .I3(FIFO_full),
-        .O(\Tx_out[2]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h0400)) 
-    \Tx_out[3]_i_1 
-       (.I0(current_state__0[2]),
-        .I1(current_state__0[0]),
-        .I2(current_state__0[1]),
-        .I3(FIFO_ready),
-        .O(\Tx_out[3]_i_1_n_0 ));
+        .I3(Tx_out[0]),
+        .O(\Tx_out[0]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h8000FFFF80000000)) 
+    \Tx_out[1]_i_1 
+       (.I0(threshold0_in),
+        .I1(\Tx_out[1]_i_3_n_0 ),
+        .I2(FIFO_empty),
+        .I3(\Tx_out[1]_i_4_n_0 ),
+        .I4(\Tx_out[1]_i_5_n_0 ),
+        .I5(Tx_out[1]),
+        .O(\Tx_out[1]_i_1_n_0 ));
   LUT2 #(
-    .INIT(4'h7)) 
-    \Tx_out[4]_i_1 
-       (.I0(current_state__0[1]),
+    .INIT(4'h2)) 
+    \Tx_out[1]_i_2 
+       (.I0(Rx_in[6]),
+        .I1(current_state__0[1]),
+        .O(threshold0_in));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT2 #(
+    .INIT(4'h1)) 
+    \Tx_out[1]_i_3 
+       (.I0(Rx_in[4]),
+        .I1(Rx_in[5]),
+        .O(\Tx_out[1]_i_3_n_0 ));
+  LUT3 #(
+    .INIT(8'h02)) 
+    \Tx_out[1]_i_4 
+       (.I0(Tx_en_i_2_n_0),
         .I1(current_state__0[2]),
-        .O(\Tx_out[4]_i_1_n_0 ));
-  LUT4 #(
-    .INIT(16'h0004)) 
-    \Tx_out[4]_i_2 
-       (.I0(current_state__0[2]),
-        .I1(current_state__0[0]),
+        .I2(current_state__0[0]),
+        .O(\Tx_out[1]_i_4_n_0 ));
+  LUT3 #(
+    .INIT(8'h3D)) 
+    \Tx_out[1]_i_5 
+       (.I0(current_state__0[0]),
+        .I1(current_state__0[2]),
         .I2(current_state__0[1]),
-        .I3(FIFO_ready),
-        .O(\Tx_out[4]_i_2_n_0 ));
+        .O(\Tx_out[1]_i_5_n_0 ));
+  LUT5 #(
+    .INIT(32'hC3C00200)) 
+    \Tx_out[2]_i_1 
+       (.I0(FIFO_full),
+        .I1(current_state__0[1]),
+        .I2(current_state__0[2]),
+        .I3(current_state__0[0]),
+        .I4(Tx_out[2]),
+        .O(\Tx_out[2]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hC3C00200)) 
+    \Tx_out[3]_i_1 
+       (.I0(FIFO_ready),
+        .I1(current_state__0[1]),
+        .I2(current_state__0[2]),
+        .I3(current_state__0[0]),
+        .I4(Tx_out[3]),
+        .O(\Tx_out[3]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hC3C00100)) 
+    \Tx_out[4]_i_1 
+       (.I0(FIFO_ready),
+        .I1(current_state__0[1]),
+        .I2(current_state__0[2]),
+        .I3(current_state__0[0]),
+        .I4(Tx_out[4]),
+        .O(\Tx_out[4]_i_1_n_0 ));
   FDRE \Tx_out_reg[0] 
        (.C(clk),
-        .CE(\Tx_out[4]_i_1_n_0 ),
+        .CE(1'b1),
         .D(\Tx_out[0]_i_1_n_0 ),
         .Q(Tx_out[0]),
         .R(1'b0));
   FDRE \Tx_out_reg[1] 
        (.C(clk),
-        .CE(\Tx_out[4]_i_1_n_0 ),
+        .CE(1'b1),
         .D(\Tx_out[1]_i_1_n_0 ),
         .Q(Tx_out[1]),
         .R(1'b0));
   FDRE \Tx_out_reg[2] 
        (.C(clk),
-        .CE(\Tx_out[4]_i_1_n_0 ),
+        .CE(1'b1),
         .D(\Tx_out[2]_i_1_n_0 ),
         .Q(Tx_out[2]),
         .R(1'b0));
   FDRE \Tx_out_reg[3] 
        (.C(clk),
-        .CE(\Tx_out[4]_i_1_n_0 ),
+        .CE(1'b1),
         .D(\Tx_out[3]_i_1_n_0 ),
         .Q(Tx_out[3]),
         .R(1'b0));
   FDRE \Tx_out_reg[4] 
        (.C(clk),
-        .CE(\Tx_out[4]_i_1_n_0 ),
-        .D(\Tx_out[4]_i_2_n_0 ),
+        .CE(1'b1),
+        .D(\Tx_out[4]_i_1_n_0 ),
         .Q(Tx_out[4]),
         .R(1'b0));
   LUT4 #(
@@ -407,12 +434,12 @@ module fpga_design_central_interface_0_0_central_interface
         .I3(Rx_end),
         .O(threshold));
   LUT4 #(
-    .INIT(16'h0400)) 
+    .INIT(16'h1000)) 
     \threshold_out[11]_i_1 
-       (.I0(current_state__0[0]),
-        .I1(current_state__0[2]),
-        .I2(current_state__0[1]),
-        .I3(Rx_end),
+       (.I0(current_state__0[1]),
+        .I1(current_state__0[0]),
+        .I2(Rx_end),
+        .I3(current_state__0[2]),
         .O(\threshold_out[11]_i_1_n_0 ));
   FDRE \threshold_out_reg[0] 
        (.C(clk),

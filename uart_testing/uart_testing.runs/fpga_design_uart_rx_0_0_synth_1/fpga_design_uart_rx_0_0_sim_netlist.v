@@ -1,14 +1,14 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-// Date        : Sat Mar  9 11:08:07 2019
+// Date        : Sun Apr 14 17:01:36 2019
 // Host        : BEAST running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 //               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ fpga_design_uart_rx_0_0_sim_netlist.v
 // Design      : fpga_design_uart_rx_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
-// Device      : xc7a15tcpg236-1
+// Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
@@ -20,17 +20,20 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix
     uart_clk,
     rst,
     Rx_out,
-    Rx_end);
+    Rx_end,
+    transition);
   input Rx;
   (* x_interface_info = "xilinx.com:signal:clock:1.0 uart_clk CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME uart_clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, PHASE 0.000" *) input uart_clk;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 rst RST" *) (* x_interface_parameter = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW" *) input rst;
   output [7:0]Rx_out;
   output Rx_end;
+  output transition;
 
   wire \<const1> ;
   wire Rx;
   wire [7:0]Rx_out;
   wire rst;
+  wire transition;
   wire uart_clk;
 
   assign Rx_end = \<const1> ;
@@ -38,6 +41,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix
        (.Rx(Rx),
         .Rx_out(Rx_out),
         .rst(rst),
+        .transition(transition),
         .uart_clk(uart_clk));
   VCC VCC
        (.P(\<const1> ));
@@ -45,25 +49,28 @@ endmodule
 
 module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_rx
    (Rx_out,
-    rst,
+    transition,
+    Rx,
     uart_clk,
-    Rx);
+    rst);
   output [7:0]Rx_out;
-  input rst;
-  input uart_clk;
+  output transition;
   input Rx;
+  input uart_clk;
+  input rst;
 
   wire Rx;
   wire [7:0]Rx_out;
-  wire \Rx_shift_registers_reg_n_0_[0] ;
+  wire \Rx_shift_registers_reg_n_0_[9] ;
   wire counter;
   wire [3:0]counter_reg__0;
   wire current_state;
   wire current_state_i_1_n_0;
-  wire eqOp__0;
-  wire [7:0]p_0_in;
+  wire eqOp;
+  wire [7:0]p_1_in;
   wire [3:0]plusOp;
   wire rst;
+  wire transition;
   wire uart_clk;
 
   LUT1 #(
@@ -71,107 +78,115 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_rx
     \Rx_out[7]_i_1 
        (.I0(current_state),
         .O(counter));
+  LUT4 #(
+    .INIT(16'h1000)) 
+    \Rx_out[7]_i_2 
+       (.I0(counter_reg__0[2]),
+        .I1(counter_reg__0[1]),
+        .I2(counter_reg__0[3]),
+        .I3(counter_reg__0[0]),
+        .O(eqOp));
   FDRE \Rx_out_reg[0] 
        (.C(uart_clk),
-        .CE(eqOp__0),
-        .D(p_0_in[0]),
+        .CE(eqOp),
+        .D(p_1_in[0]),
         .Q(Rx_out[0]),
         .R(counter));
   FDRE \Rx_out_reg[1] 
        (.C(uart_clk),
-        .CE(eqOp__0),
-        .D(p_0_in[1]),
+        .CE(eqOp),
+        .D(p_1_in[1]),
         .Q(Rx_out[1]),
         .R(counter));
   FDRE \Rx_out_reg[2] 
        (.C(uart_clk),
-        .CE(eqOp__0),
-        .D(p_0_in[2]),
+        .CE(eqOp),
+        .D(p_1_in[2]),
         .Q(Rx_out[2]),
         .R(counter));
   FDRE \Rx_out_reg[3] 
        (.C(uart_clk),
-        .CE(eqOp__0),
-        .D(p_0_in[3]),
+        .CE(eqOp),
+        .D(p_1_in[3]),
         .Q(Rx_out[3]),
         .R(counter));
   FDRE \Rx_out_reg[4] 
        (.C(uart_clk),
-        .CE(eqOp__0),
-        .D(p_0_in[4]),
+        .CE(eqOp),
+        .D(p_1_in[4]),
         .Q(Rx_out[4]),
         .R(counter));
   FDRE \Rx_out_reg[5] 
        (.C(uart_clk),
-        .CE(eqOp__0),
-        .D(p_0_in[5]),
+        .CE(eqOp),
+        .D(p_1_in[5]),
         .Q(Rx_out[5]),
         .R(counter));
   FDRE \Rx_out_reg[6] 
        (.C(uart_clk),
-        .CE(eqOp__0),
-        .D(p_0_in[6]),
+        .CE(eqOp),
+        .D(p_1_in[6]),
         .Q(Rx_out[6]),
         .R(counter));
   FDRE \Rx_out_reg[7] 
        (.C(uart_clk),
-        .CE(eqOp__0),
-        .D(p_0_in[7]),
+        .CE(eqOp),
+        .D(p_1_in[7]),
         .Q(Rx_out[7]),
-        .R(counter));
-  FDRE \Rx_shift_registers_reg[0] 
-       (.C(uart_clk),
-        .CE(1'b1),
-        .D(Rx),
-        .Q(\Rx_shift_registers_reg_n_0_[0] ),
         .R(counter));
   FDRE \Rx_shift_registers_reg[1] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(\Rx_shift_registers_reg_n_0_[0] ),
-        .Q(p_0_in[0]),
+        .D(p_1_in[1]),
+        .Q(p_1_in[0]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[2] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[0]),
-        .Q(p_0_in[1]),
+        .D(p_1_in[2]),
+        .Q(p_1_in[1]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[3] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[1]),
-        .Q(p_0_in[2]),
+        .D(p_1_in[3]),
+        .Q(p_1_in[2]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[4] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[2]),
-        .Q(p_0_in[3]),
+        .D(p_1_in[4]),
+        .Q(p_1_in[3]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[5] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[3]),
-        .Q(p_0_in[4]),
+        .D(p_1_in[5]),
+        .Q(p_1_in[4]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[6] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[4]),
-        .Q(p_0_in[5]),
+        .D(p_1_in[6]),
+        .Q(p_1_in[5]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[7] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[5]),
-        .Q(p_0_in[6]),
+        .D(p_1_in[7]),
+        .Q(p_1_in[6]),
         .R(counter));
   FDRE \Rx_shift_registers_reg[8] 
        (.C(uart_clk),
         .CE(1'b1),
-        .D(p_0_in[6]),
-        .Q(p_0_in[7]),
+        .D(\Rx_shift_registers_reg_n_0_[9] ),
+        .Q(p_1_in[7]),
+        .R(counter));
+  FDRE \Rx_shift_registers_reg[9] 
+       (.C(uart_clk),
+        .CE(1'b1),
+        .D(Rx),
+        .Q(\Rx_shift_registers_reg_n_0_[9] ),
         .R(counter));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT1 #(
@@ -227,15 +242,13 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_rx
         .D(plusOp[3]),
         .Q(counter_reg__0[3]),
         .R(counter));
-  LUT6 #(
-    .INIT(64'h4440444444444444)) 
+  LUT4 #(
+    .INIT(16'h0437)) 
     current_state_i_1
-       (.I0(rst),
+       (.I0(eqOp),
         .I1(current_state),
-        .I2(counter_reg__0[2]),
-        .I3(counter_reg__0[0]),
-        .I4(counter_reg__0[3]),
-        .I5(counter_reg__0[1]),
+        .I2(rst),
+        .I3(Rx),
         .O(current_state_i_1_n_0));
   FDRE current_state_reg
        (.C(uart_clk),
@@ -243,22 +256,12 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_uart_rx
         .D(current_state_i_1_n_0),
         .Q(current_state),
         .R(1'b0));
-  FDRE #(
-    .IS_C_INVERTED(1'b1)) 
-    current_state_reg__0
-       (.C(Rx),
+  FDRE transition_reg
+       (.C(uart_clk),
         .CE(1'b1),
-        .D(1'b1),
-        .Q(current_state),
+        .D(current_state),
+        .Q(transition),
         .R(1'b0));
-  LUT4 #(
-    .INIT(16'h1000)) 
-    eqOp
-       (.I0(counter_reg__0[2]),
-        .I1(counter_reg__0[0]),
-        .I2(counter_reg__0[3]),
-        .I3(counter_reg__0[1]),
-        .O(eqOp__0));
 endmodule
 `ifndef GLBL
 `define GLBL

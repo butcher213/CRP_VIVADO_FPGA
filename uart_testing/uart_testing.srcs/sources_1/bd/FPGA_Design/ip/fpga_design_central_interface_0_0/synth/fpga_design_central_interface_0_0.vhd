@@ -65,7 +65,8 @@ ENTITY fpga_design_central_interface_0_0 IS
     Tx_en : OUT STD_LOGIC;
     read_enable : OUT STD_LOGIC;
     threshold_out : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
-    Tx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    Tx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    works : OUT STD_LOGIC
   );
 END fpga_design_central_interface_0_0;
 
@@ -84,7 +85,8 @@ ARCHITECTURE fpga_design_central_interface_0_0_arch OF fpga_design_central_inter
       Tx_en : OUT STD_LOGIC;
       read_enable : OUT STD_LOGIC;
       threshold_out : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
-      Tx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+      Tx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+      works : OUT STD_LOGIC
     );
   END COMPONENT central_interface;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -92,7 +94,7 @@ ARCHITECTURE fpga_design_central_interface_0_0_arch OF fpga_design_central_inter
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF fpga_design_central_interface_0_0_arch : ARCHITECTURE IS "fpga_design_central_interface_0_0,central_interface,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF fpga_design_central_interface_0_0_arch: ARCHITECTURE IS "fpga_design_central_interface_0_0,central_interface,{x_ipProduct=Vivado 2018.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=central_interface,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE CORE_GENERATION_INFO OF fpga_design_central_interface_0_0_arch: ARCHITECTURE IS "fpga_design_central_interface_0_0,central_interface,{x_ipProduct=Vivado 2018.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=central_interface,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=VHDL}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF fpga_design_central_interface_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -114,6 +116,7 @@ BEGIN
       Tx_en => Tx_en,
       read_enable => read_enable,
       threshold_out => threshold_out,
-      Tx_out => Tx_out
+      Tx_out => Tx_out,
+      works => works
     );
 END fpga_design_central_interface_0_0_arch;

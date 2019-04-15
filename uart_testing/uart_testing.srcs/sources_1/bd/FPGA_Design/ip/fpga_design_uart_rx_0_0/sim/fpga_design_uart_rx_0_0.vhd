@@ -59,7 +59,8 @@ ENTITY fpga_design_uart_rx_0_0 IS
     uart_clk : IN STD_LOGIC;
     rst : IN STD_LOGIC;
     Rx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-    Rx_end : OUT STD_LOGIC
+    Rx_end : OUT STD_LOGIC;
+    transition : OUT STD_LOGIC
   );
 END fpga_design_uart_rx_0_0;
 
@@ -72,7 +73,8 @@ ARCHITECTURE fpga_design_uart_rx_0_0_arch OF fpga_design_uart_rx_0_0 IS
       uart_clk : IN STD_LOGIC;
       rst : IN STD_LOGIC;
       Rx_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-      Rx_end : OUT STD_LOGIC
+      Rx_end : OUT STD_LOGIC;
+      transition : OUT STD_LOGIC
     );
   END COMPONENT uart_rx;
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
@@ -90,6 +92,7 @@ BEGIN
       uart_clk => uart_clk,
       rst => rst,
       Rx_out => Rx_out,
-      Rx_end => Rx_end
+      Rx_end => Rx_end,
+      transition => transition
     );
 END fpga_design_uart_rx_0_0_arch;

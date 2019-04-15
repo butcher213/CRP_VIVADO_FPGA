@@ -42,7 +42,8 @@ entity central_interface is
         Tx_en : OUT STD_LOGIC;
         read_enable : OUT STD_LOGIC;
         threshold_out : OUT STD_LOGIC_VECTOR(11 downto 0);
-        Tx_out : OUT STD_LOGIC_VECTOR(7 downto 0));
+        Tx_out : OUT STD_LOGIC_VECTOR(7 downto 0);
+        works: OUT STD_LOGIC);
 end central_interface;
 
 architecture Behavioral of central_interface is
@@ -61,6 +62,7 @@ begin
             when INIT =>
                 Tx_out <= (others => '0');
                 Tx_en <= '0';
+                works <= '0';
                 read_enable <= '0';
                 -- FIFO STATUS
                 if(Rx_end = '1' and Rx_in = "00100000") then current_state <= FIFO_STATUS;
@@ -80,14 +82,18 @@ begin
                 
                 current_state <= INIT;
             when FIFO_STATUS =>
+                works <= '1';
                 Tx_en <= '1';
                 if(FIFO_ready = '1') then
-                    Tx_out <= "00001000";
+                    Tx_out(3) <= '1';
                 else
-                    Tx_out <= "00010000";
+                    Tx_out(4) <= '1';
                 end if;
                 if(FIFO_full = '1') then
                     Tx_out(2) <= '1';
+                end if;
+                if(FIFO_empty = '1') then
+                    Tx_out(5) <= '1';
                 end if;
                 current_state <= INIT;
             when CHANGE_THRESHOLD =>

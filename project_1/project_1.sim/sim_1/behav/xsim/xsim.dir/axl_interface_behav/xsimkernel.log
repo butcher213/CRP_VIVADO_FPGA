@@ -1,0 +1,4 @@
+Running: xsim.dir/axl_interface_behav/xsimk.exe -simmode gui -wdb axl_interface_behav.wdb -simrunnum 0 -socket 14645
+Design successfully loaded
+Design Loading Memory Usage: 5456 KB (Peak: 5456 KB)
+Design Loading CPU Usage: 30 ms

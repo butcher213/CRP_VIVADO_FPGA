@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# central_interface, uart_rx, uart_tx
+# UART_clk_gen, camera_simulator, central_interface, fifo_protector, image_thresholding, threshold_memory, uart_rx, uart_tx
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -50,7 +50,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
-   create_project project_1 myproj -part xc7a15tcpg236-1
+   create_project project_1 myproj -part xc7a35tcpg236-1
 }
 
 
@@ -164,19 +164,39 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
+  set Rx [ create_bd_port -dir I Rx ]
   set Tx [ create_bd_port -dir O Tx ]
-  set Tx_enabled [ create_bd_port -dir O Tx_enabled ]
-  set clk [ create_bd_port -dir I clk ]
-  set fifo_empty [ create_bd_port -dir I fifo_empty ]
-  set fifo_full [ create_bd_port -dir I fifo_full ]
-  set fifo_out [ create_bd_port -dir I -from 39 -to 0 fifo_out ]
-  set fifo_ready [ create_bd_port -dir I fifo_ready ]
-  set read_en [ create_bd_port -dir O read_en ]
+  set cameraid [ create_bd_port -dir I -from 1 -to 0 cameraid ]
+  set dout [ create_bd_port -dir O -from 7 -to 0 dout ]
+  set fifo_ready [ create_bd_port -dir O fifo_ready ]
+  set layerid [ create_bd_port -dir I layerid ]
+  set pixClk [ create_bd_port -dir I pixClk ]
   set rst [ create_bd_port -dir I rst ]
-  set threshold [ create_bd_port -dir O -from 11 -to 0 threshold ]
-  set tx_lock [ create_bd_port -dir O tx_lock ]
-  set uart_rx [ create_bd_port -dir I uart_rx ]
+  set rx_out [ create_bd_port -dir O rx_out ]
+  set sim_enable [ create_bd_port -dir I sim_enable ]
 
+  # Create instance: UART_clk_gen_0, and set properties
+  set block_name UART_clk_gen
+  set block_cell_name UART_clk_gen_0
+  if { [catch {set UART_clk_gen_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $UART_clk_gen_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: camera_simulator_0, and set properties
+  set block_name camera_simulator
+  set block_cell_name camera_simulator_0
+  if { [catch {set camera_simulator_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $camera_simulator_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: central_interface_0, and set properties
   set block_name central_interface
   set block_cell_name central_interface_0
@@ -184,6 +204,59 @@ proc create_root_design { parentCell } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $central_interface_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: fifo_generator_1, and set properties
+  set fifo_generator_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_1 ]
+  set_property -dict [ list \
+   CONFIG.Data_Count_Width {11} \
+   CONFIG.Empty_Threshold_Assert_Value {5} \
+   CONFIG.Empty_Threshold_Negate_Value {6} \
+   CONFIG.Fifo_Implementation {Independent_Clocks_Builtin_FIFO} \
+   CONFIG.Full_Threshold_Assert_Value {1938} \
+   CONFIG.Full_Threshold_Negate_Value {1937} \
+   CONFIG.Input_Data_Width {40} \
+   CONFIG.Input_Depth {2048} \
+   CONFIG.Output_Data_Width {40} \
+   CONFIG.Output_Depth {2048} \
+   CONFIG.Read_Data_Count_Width {11} \
+   CONFIG.Reset_Type {Asynchronous_Reset} \
+   CONFIG.Use_Dout_Reset {false} \
+   CONFIG.Write_Clock_Frequency {26} \
+   CONFIG.Write_Data_Count_Width {11} \
+ ] $fifo_generator_1
+
+  # Create instance: fifo_protector_0, and set properties
+  set block_name fifo_protector
+  set block_cell_name fifo_protector_0
+  if { [catch {set fifo_protector_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $fifo_protector_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: image_thresholding_0, and set properties
+  set block_name image_thresholding
+  set block_cell_name image_thresholding_0
+  if { [catch {set image_thresholding_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $image_thresholding_0 eq "" } {
+     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: threshold_memory_0, and set properties
+  set block_name threshold_memory
+  set block_cell_name threshold_memory_0
+  if { [catch {set threshold_memory_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $threshold_memory_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -211,23 +284,35 @@ proc create_root_design { parentCell } {
    }
   
   # Create port connections
+  connect_bd_net -net Rx_1 [get_bd_ports Rx] [get_bd_pins uart_rx_0/Rx]
+  connect_bd_net -net camera_simulator_0_href [get_bd_pins camera_simulator_0/href] [get_bd_pins image_thresholding_0/href]
+  connect_bd_net -net camera_simulator_0_pix_out [get_bd_pins camera_simulator_0/pix_out] [get_bd_pins image_thresholding_0/imgData]
+  connect_bd_net -net camera_simulator_0_vsync [get_bd_pins camera_simulator_0/vsync] [get_bd_pins image_thresholding_0/vsync]
+  connect_bd_net -net cameraid_1 [get_bd_ports cameraid] [get_bd_pins image_thresholding_0/cameraId]
   connect_bd_net -net central_interface_0_Tx_en [get_bd_pins central_interface_0/Tx_en] [get_bd_pins uart_tx_0/Tx_en]
-  connect_bd_net -net central_interface_0_Tx_out [get_bd_pins central_interface_0/Tx_out] [get_bd_pins uart_tx_0/Tx_in]
+  connect_bd_net -net central_interface_0_Tx_out [get_bd_ports dout] [get_bd_pins central_interface_0/Tx_out] [get_bd_pins uart_tx_0/Tx_in]
   connect_bd_net -net central_interface_0_read_enable [get_bd_pins central_interface_0/read_enable] [get_bd_pins uart_tx_0/read_enable]
-  connect_bd_net -net central_interface_0_threshold_out [get_bd_ports threshold] [get_bd_pins central_interface_0/threshold_out]
-  connect_bd_net -net clk_1 [get_bd_ports clk] [get_bd_pins central_interface_0/clk] [get_bd_pins uart_rx_0/uart_clk] [get_bd_pins uart_tx_0/UART_clk]
-  connect_bd_net -net fifo_empty_1 [get_bd_ports fifo_empty] [get_bd_pins central_interface_0/FIFO_empty]
-  connect_bd_net -net fifo_full_1 [get_bd_ports fifo_full] [get_bd_pins central_interface_0/FIFO_full]
-  connect_bd_net -net fifo_out_1 [get_bd_ports fifo_out] [get_bd_pins uart_tx_0/fifo_in]
-  connect_bd_net -net fifo_ready_1 [get_bd_ports fifo_ready] [get_bd_pins central_interface_0/FIFO_ready] [get_bd_pins uart_tx_0/fifo_ready]
-  connect_bd_net -net rst_1 [get_bd_ports rst] [get_bd_pins central_interface_0/rst] [get_bd_pins uart_rx_0/rst] [get_bd_pins uart_tx_0/rst]
+  connect_bd_net -net central_interface_0_threshold_out [get_bd_pins central_interface_0/threshold_out] [get_bd_pins threshold_memory_0/threshold_in]
+  connect_bd_net -net fifo_generator_1_dout [get_bd_pins fifo_generator_1/dout] [get_bd_pins uart_tx_0/fifo_in]
+  connect_bd_net -net fifo_generator_1_empty [get_bd_pins central_interface_0/FIFO_empty] [get_bd_pins fifo_generator_1/empty]
+  connect_bd_net -net fifo_generator_1_full [get_bd_pins central_interface_0/FIFO_full] [get_bd_pins fifo_generator_1/full]
+  connect_bd_net -net fifo_protector_0_fifo_ready [get_bd_ports fifo_ready] [get_bd_pins central_interface_0/FIFO_ready] [get_bd_pins fifo_protector_0/fifo_ready]
+  connect_bd_net -net fifo_protector_0_fifo_rst [get_bd_pins fifo_generator_1/rst] [get_bd_pins fifo_protector_0/fifo_rst]
+  connect_bd_net -net fifo_protector_0_rd_en [get_bd_pins fifo_generator_1/rd_en] [get_bd_pins fifo_protector_0/rd_en]
+  connect_bd_net -net fifo_protector_0_wr_en [get_bd_pins fifo_generator_1/wr_en] [get_bd_pins fifo_protector_0/wr_en]
+  connect_bd_net -net image_thresholding_0_packet [get_bd_pins fifo_generator_1/din] [get_bd_pins image_thresholding_0/packet]
+  connect_bd_net -net image_thresholding_0_wr_en [get_bd_pins fifo_protector_0/wr_in] [get_bd_pins image_thresholding_0/wr_en]
+  connect_bd_net -net layerid_1 [get_bd_ports layerid] [get_bd_pins image_thresholding_0/layerId]
+  connect_bd_net -net pixClk_1 [get_bd_ports pixClk] [get_bd_pins UART_clk_gen_0/clk] [get_bd_pins camera_simulator_0/clk] [get_bd_pins fifo_generator_1/wr_clk] [get_bd_pins fifo_protector_0/clk] [get_bd_pins image_thresholding_0/pixClk]
+  connect_bd_net -net rst_1 [get_bd_ports rst] [get_bd_pins central_interface_0/rst] [get_bd_pins fifo_protector_0/global_rst] [get_bd_pins image_thresholding_0/rst] [get_bd_pins threshold_memory_0/rst] [get_bd_pins uart_rx_0/rst] [get_bd_pins uart_tx_0/rst]
+  connect_bd_net -net sim_enable_1 [get_bd_ports sim_enable] [get_bd_pins camera_simulator_0/enable]
+  connect_bd_net -net threshold_memory_0_threshold_out [get_bd_pins image_thresholding_0/mem_threshold] [get_bd_pins threshold_memory_0/threshold_out]
+  connect_bd_net -net uart_pll_0_clk_out [get_bd_pins UART_clk_gen_0/baudclk] [get_bd_pins central_interface_0/clk] [get_bd_pins fifo_generator_1/rd_clk] [get_bd_pins threshold_memory_0/clk] [get_bd_pins uart_rx_0/uart_clk] [get_bd_pins uart_tx_0/UART_clk]
   connect_bd_net -net uart_rx_0_Rx_end [get_bd_pins central_interface_0/Rx_end] [get_bd_pins uart_rx_0/Rx_end]
   connect_bd_net -net uart_rx_0_Rx_out [get_bd_pins central_interface_0/Rx_in] [get_bd_pins uart_rx_0/Rx_out]
-  connect_bd_net -net uart_rx_1 [get_bd_ports uart_rx] [get_bd_pins uart_rx_0/Rx]
+  connect_bd_net -net uart_rx_0_transition [get_bd_ports rx_out] [get_bd_pins uart_rx_0/transition]
   connect_bd_net -net uart_tx_0_Tx [get_bd_ports Tx] [get_bd_pins uart_tx_0/Tx]
-  connect_bd_net -net uart_tx_0_Tx_enabled [get_bd_ports Tx_enabled] [get_bd_pins uart_tx_0/Tx_enabled]
-  connect_bd_net -net uart_tx_0_rd_en [get_bd_ports read_en] [get_bd_pins uart_tx_0/rd_en]
-  connect_bd_net -net uart_tx_0_tx_lock [get_bd_ports tx_lock] [get_bd_pins uart_tx_0/tx_lock]
+  connect_bd_net -net uart_tx_0_rd_en [get_bd_pins fifo_protector_0/rd_in] [get_bd_pins uart_tx_0/rd_en]
 
   # Create address segments
 

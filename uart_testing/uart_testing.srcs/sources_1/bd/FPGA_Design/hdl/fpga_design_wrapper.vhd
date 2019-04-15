@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
---Date        : Sat Mar  9 10:58:20 2019
+--Date        : Sun Apr 14 18:47:16 2019
 --Host        : BEAST running 64-bit major release  (build 9200)
 --Command     : generate_target fpga_design_wrapper.bd
 --Design      : fpga_design_wrapper
@@ -13,52 +13,46 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity fpga_design_wrapper is
   port (
+    Rx : in STD_LOGIC;
     Tx : out STD_LOGIC;
-    Tx_enabled : out STD_LOGIC;
-    clk : in STD_LOGIC;
-    fifo_empty : in STD_LOGIC;
-    fifo_full : in STD_LOGIC;
-    fifo_out : in STD_LOGIC_VECTOR ( 39 downto 0 );
-    fifo_ready : in STD_LOGIC;
-    read_en : out STD_LOGIC;
+    cameraid : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    fifo_ready : out STD_LOGIC;
+    layerid : in STD_LOGIC;
+    pixClk : in STD_LOGIC;
     rst : in STD_LOGIC;
-    threshold : out STD_LOGIC_VECTOR ( 11 downto 0 );
-    tx_lock : out STD_LOGIC;
-    uart_rx : in STD_LOGIC
+    rx_out : out STD_LOGIC;
+    sim_enable : in STD_LOGIC
   );
 end fpga_design_wrapper;
 
 architecture STRUCTURE of fpga_design_wrapper is
   component fpga_design is
   port (
-    clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    fifo_out : in STD_LOGIC_VECTOR ( 39 downto 0 );
-    fifo_empty : in STD_LOGIC;
-    fifo_full : in STD_LOGIC;
-    fifo_ready : in STD_LOGIC;
-    uart_rx : in STD_LOGIC;
-    threshold : out STD_LOGIC_VECTOR ( 11 downto 0 );
     Tx : out STD_LOGIC;
-    read_en : out STD_LOGIC;
-    Tx_enabled : out STD_LOGIC;
-    tx_lock : out STD_LOGIC
+    layerid : in STD_LOGIC;
+    cameraid : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    pixClk : in STD_LOGIC;
+    Rx : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    sim_enable : in STD_LOGIC;
+    fifo_ready : out STD_LOGIC;
+    rx_out : out STD_LOGIC;
+    dout : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component fpga_design;
 begin
 fpga_design_i: component fpga_design
      port map (
+      Rx => Rx,
       Tx => Tx,
-      Tx_enabled => Tx_enabled,
-      clk => clk,
-      fifo_empty => fifo_empty,
-      fifo_full => fifo_full,
-      fifo_out(39 downto 0) => fifo_out(39 downto 0),
+      cameraid(1 downto 0) => cameraid(1 downto 0),
+      dout(7 downto 0) => dout(7 downto 0),
       fifo_ready => fifo_ready,
-      read_en => read_en,
+      layerid => layerid,
+      pixClk => pixClk,
       rst => rst,
-      threshold(11 downto 0) => threshold(11 downto 0),
-      tx_lock => tx_lock,
-      uart_rx => uart_rx
+      rx_out => rx_out,
+      sim_enable => sim_enable
     );
 end STRUCTURE;
